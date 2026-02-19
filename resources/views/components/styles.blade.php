@@ -1189,7 +1189,7 @@ font-size:20px !important;
 .breadcrumb{
     font-size:18px;
     color: #FFF8F5;
-    margin-left:150px;
+    margin-left:140px;
     margin-bottom:50px;
 }
 
@@ -1210,4 +1210,210 @@ font-size:20px !important;
 .breadcrumb .current{
     color:#fff;
 }
+
+/* happycustomers */
+.happy-customers{
+  background:#f3f1ee;
+  padding:40px 0;
+  margin-left:300px;
+  margin-top:-80px;
+}
+
+.hc-container{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+/* CIRCULAR IMAGES */
+.hc-images{
+  display:flex;
+  align-items:center;
+}
+
+.hc-images img{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #fff;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+/* Overlap Effect */
+.hc-images img:nth-child(2){
+  margin-left:-25px;
+}
+
+.hc-images img:nth-child(3){
+  margin-left:-25px;
+}
+
+/* TEXT SIDE */
+.hc-content h2{
+  font-family:'Holtwood One SC', serif;
+  font-size:30px;
+  color:#111;
+}
+
+.hc-content h2 span{
+  color:#bb0000;
+}
+
+/* RATING */
+.hc-rating{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.hc-rating i{
+  color:#ffb400;
+  font-size:18px;
+}
+
+.rating-number{
+  font-size:18px;
+  font-weight:600;
+  color:#111;
+}
+
+.rating-count{
+  font-size:16px;
+  color:#888;
+}
+
+/* what our customers say  real experience*/
+.why-choose{
+  background:#f3f1ee;
+  padding:30px 0 80px;
+  text-align:center;
+}
+
+.wc-container{
+  max-width:1100px;
+  margin:auto;
+}
+
+/* HEADER */
+.wc-sub{
+  display:block;
+  color:#ff7d01;
+  font-size:16px;
+  margin-bottom:10px;
+  font-weight:400;
+}
+
+.wc-header h2{
+  font-family:'Holtwood One SC', serif;
+  font-size:38px;
+  margin:0 0 60px;
+  color:#111;
+}
+
+.wc-header h2 span{
+  color:#bb0000;
+}
+
+/* GRID */
+.wc-grid{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-top:-30px;
+}
+
+/* ITEM */
+.wc-item{
+  width:33.33%;
+}
+
+.wc-item img{
+  width:260px; /* adjust to match your image proportions */
+  height:auto;
+  margin-bottom:0px;
+}
+
+.wc-item h4{
+  font-size:18px;
+  font-weight:800;
+  color:#111;
+}
+
+.wc-item p{
+  font-size:16px;
+  color: #333333;
+  font-weight:800px;
+  line-height:1.6;
+}
+
+
+/* video section */
+.video-section{
+  background:#f3f1ee;     /* same beige background */
+  padding:20px 0;
+  display:flex;
+  justify-content:center;
+  margin-top:-50px;
+}
+
+.video-wrapper{
+  position:relative;
+  width:950px;          /* match screenshot width */
+  height:400px;          /* adjust to your image ratio */
+  overflow:hidden;
+}
+
+.video-bg{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* dark subtle overlay */
+.video-overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.6);  /* #000000 at 60% */
+}
+
+
+/* PLAY BUTTON */
+.play-btn{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:70px;
+  height:70px;
+  background:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:0.3s ease;
+  z-index:2;
+}
+
+.play-btn:hover{
+  transform:translate(-50%, -50%) scale(1.05);
+}
+
+/* red triangle */
+.triangle{
+  width:0;
+  height:0;
+  border-left:18px solid #bb0000;
+  border-top:12px solid transparent;
+  border-bottom:12px solid transparent;
+  margin-left:4px;
+}
+
 </style>
