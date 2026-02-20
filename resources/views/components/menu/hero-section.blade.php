@@ -62,13 +62,13 @@
         <div class="hero-content">
 
     <h1>
-        <span>ABOUT</span> US
+        <span>MENU</span> 
     </h1>
 
-    <div class="breadcrumb">
+    <div class="breaddcrumb">
         <a href="#">Home</a>
         <span>|</span>
-        <span class="current">About Us</span>
+        <span class="current">Menu</span>
     </div>
 
 </div>

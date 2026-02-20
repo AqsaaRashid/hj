@@ -66,7 +66,7 @@
       <p>All Rights Reserved @hangryjoe’s</p>
 
       <div class="footer-links">
-        <a href="#">Menu</a>
+        <a href="{{'menu'}}">Menu</a>
         <a href="#">Offers</a>
         <a href="#">Privacy Policy</a>
         <a href="#">Testimonials</a>
