@@ -12,3 +12,6 @@ Route::get('about', function () {
 Route::get('menu', function () {
     return view('menu');
 });
+Route::get('privacy', function () {
+    return view('privacy');
+});

@@ -799,6 +799,58 @@ body{
   color:#fff;
   font-size:20px;
 }
+/* ============================= */
+/* RESPONSIVE - CATEGORIES */
+/* ============================= */
+
+/* Large Laptop (3 columns) */
+@media (max-width:1200px){
+  .categories-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+/* Tablet (2 columns) */
+@media (max-width:992px){
+
+  .categories-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:20px;
+  }
+
+  .categories-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+/* Mobile (1 column) */
+@media (max-width:576px){
+
+  .categories{
+    padding:60px 15px;
+  }
+
+  .categories-header{
+    align-items:center;
+    text-align:center;
+  }
+
+  .categories-grid{
+    grid-template-columns:1fr;
+  }
+
+  .category-card{
+    padding:18px;
+  }
+
+  .category-card .icon{
+    width:45px;
+    height:45px;
+  }
+
+}
 
 /* reson */
 .reasons{
@@ -899,6 +951,86 @@ body{
   text-decoration:none;
 }
 
+/* ================================= */
+/* RESPONSIVE - REASONS SECTION */
+/* ================================= */
+
+/* Fix laptop width zone */
+@media (max-width:1200px){
+
+  .reasons{
+    margin-left:0 !important;
+    padding:80px 20px;
+  }
+
+  .main-man{
+    width:450px;
+  }
+
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+  .reasons-wrapper{
+    flex-direction:column;
+    gap:50px;
+  }
+
+  .reasons-left,
+  .reasons-right{
+    width:100%;
+  }
+
+  .reasons-right{
+    margin-left:0;
+    text-align:center;
+  }
+
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .main-man{
+    width:380px;
+  }
+
+  .shape-icon{
+    left:0;
+  }
+
+}
+
+/* Mobile */
+@media (max-width:576px){
+
+  .reasons{
+    padding:60px 15px;
+    margin-top:0 !important;
+  }
+
+  .reasons-right h2{
+    font-size:28px;
+  }
+
+  .description{
+    font-size:14px;
+  }
+
+  .main-man{
+    width:280px;
+  }
+
+  .shape-icon{
+    width:70px;
+    top:40px;
+  }
+
+  .feature{
+    text-align:left;
+  }
+
+}
 
 /* products */
 
@@ -1025,7 +1157,71 @@ body{
   margin-top:40px;
   margin-bottom:2px;
 }
+/* ================================= */
+/* RESPONSIVE - PRODUCTS SECTION */
+/* ================================= */
+
+/* Fix negative margin on smaller screens */
+@media (max-width:1200px){
+  .products{
+    margin-top:0 !important;
+    padding:40px 20px;
+  }
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+  .products-grid{
+    grid-template-columns:1fr;  /* 1 column */
+  }
+
+  .product-card{
+    flex-direction:row;
+    align-items:center;
+  }
+
+}
+
+/* Mobile */
+@media (max-width:576px){
+
+  .section-title h2{
+    font-size:28px;
+  }
+
+  .product-card{
+    flex-direction:column;   /* stack image + content */
+    text-align:center;
+    gap:15px;
+    padding:20px;
+  }
+
+  .product-img{
+    width:80px;
+  }
+
+  .top-row{
+    flex-direction:column;
+    gap:5px;
+  }
+
+  .price{
+    margin-right:0;
+  }
+
+  .product-content p{
+    font-size:14px;
+  }
+
+  .explore-btn{
+    padding:12px 30px;
+  }
+
+}
+
 /* savings */
+
 .exclusive{
   padding:80px 0;
   background:#f3f1ee;
@@ -1181,7 +1377,84 @@ font-size:20px !important;
   transform:translate(-40%,-60%);
   z-index:2;
 }
+/* ================================= */
+/* RESPONSIVE - EXCLUSIVE SECTION */
+/* ================================= */
+
+/* Fix large screen shrink zone */
+@media (max-width:1200px){
+
+  .exclusive-wrapper{
+    width:100%;
+    padding:0 20px;
+  }
+
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+  .exclusive-wrapper{
+    flex-direction:column;
+    height:auto;
+  }
+
+  .exclusive-left,
+  .exclusive-right{
+    width:100%;
+  }
+
+  .exclusive-left{
+    padding:40px 30px;
+  }
+
+  .exclusive-right{
+    height:350px;
+    border-radius:0 0 8px 8px;
+  }
+
+  .food-img{
+    width:350px;
+    height:auto;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+  }
+
+  .smoke-bg{
+    top:0;
+  }
+
+}
+
+/* Mobile */
+@media (max-width:576px){
+
+  .exclusive{
+    padding:60px 15px;
+  }
+
+  .exclusive-left h2{
+    font-size:26px;
+  }
+
+  .offers{
+    margin-left:0;
+  }
+
+  .exclusive-left::before,
+  .exclusive-left::after{
+    left:20px;
+  }
+
+  .food-img{
+    width:260px;
+  }
+
+}
+
 /* testimonials */
+
 .testimonials{
   background:#f3f1ee; /* light beige */
   padding:20px 0 90px;
@@ -1345,8 +1618,98 @@ font-size:20px !important;
   .t-cards{ position:relative; top:-210px; transform:none; left:auto; flex-direction:column; align-items:center; }
   .t-nav{ position:relative; left:auto; transform:none; bottom:auto; margin:-170px auto 0; width:max-content; }
 }
+/* ================================= */
+/* RESPONSIVE FIX – TESTIMONIALS */
+/* ================================= */
+
+/* Large screens safe scaling */
+@media (max-width:1200px){
+  .t-orange{
+    width:95%;
+  }
+
+  .t-cards{
+    max-width:95%;
+  }
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+  .t-stage{
+    height:auto;
+    margin-top:0;
+  }
+
+  .t-orange{
+    position:relative;
+    top:0;
+    left:0;
+    transform:none;
+    width:100%;
+    height:280px;
+    margin-top:30px;
+  }
+
+  .t-cards{
+    position:relative;
+    top:-200px;
+    left:0;
+    transform:none;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+  }
+
+  .t-card{
+    width:90%;
+    max-width:500px;
+  }
+
+  .t-nav{
+    position:relative;
+    left:0;
+    transform:none;
+    bottom:auto;
+    margin:-150px auto 0;
+    width:max-content;
+  }
+}
+
+/* Mobile */
+@media (max-width:576px){
+
+  .t-title{
+    font-size:26px;
+  }
+
+  .t-sub{
+    font-size:14px;
+  }
+
+  .t-orange{
+    height:220px;
+  }
+
+  .t-cards{
+    top:-160px;
+  }
+
+  .t-card{
+    padding:20px;
+  }
+
+  .t-text{
+    font-size:12px;
+  }
+
+  .t-nav{
+    margin:-120px auto 0;
+  }
+}
 
 /* moments */
+
 .featured{
   background:#f3f1ee;
   padding-bottom:60px ;
@@ -1409,8 +1772,75 @@ font-size:20px !important;
   object-fit:cover;
   display:block;
 }
+/* ================================= */
+/* RESPONSIVE – FEATURED SECTION */
+/* ================================= */
+
+/* Remove risky negative margin on smaller screens */
+@media (max-width:1200px){
+  .featured{
+    margin-top:0;
+  }
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+  .f-container{
+    flex-direction:column;
+    gap:40px;
+  }
+
+  .f-left,
+  .f-right{
+    width:100%;
+  }
+
+  .f-left{
+    margin-left:0;
+    padding-top:0;
+    text-align:center;
+  }
+
+  .f-title{
+    font-size:32px;
+  }
+
+  .f-right{
+    justify-content:center;
+  }
+
+  .f-img{
+    height:220px;
+  }
+
+}
+
+/* Mobile */
+@media (max-width:576px){
+
+  .f-title{
+    font-size:26px;
+  }
+
+  .f-sub{
+    font-size:14px;
+  }
+
+  .f-right{
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .f-img{
+    width:100%;
+    height:220px;
+  }
+
+}
 
 /* footer */
+
 .contact-section{
   background:#f3f1ee;
 }
@@ -1566,6 +1996,90 @@ font-size:20px !important;
   text-decoration:none;
   font-size:14px;
 }
+/* ================================= */
+/* RESPONSIVE – CONTACT SECTION */
+/* ================================= */
+
+/* Remove fixed height below large screens */
+@media (max-width:1200px){
+  .contact-wrapper{
+    height:auto;
+  }
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+  .contact-wrapper{
+    flex-direction:column;
+  }
+
+  .contact-left,
+  .contact-map{
+    width:100%;
+  }
+
+  .contact-left{
+    padding:50px 30px;
+  }
+
+  .contact-map{
+    height:350px;
+  }
+
+  .cta-strip{
+    flex-direction:column;
+    align-items:center !important;
+    gap:20px;
+    padding:30px 20px;
+    text-align:center;
+  }
+
+  .cta-strip h3{
+    margin-left:0 !important;
+    font-size:26px;
+  }
+
+  .cta-btn{
+    margin-right:0 !important;
+  }
+
+  .footer-container{
+    flex-direction:column;
+    gap:15px;
+    padding:20px;
+    text-align:center;
+  }
+
+}
+
+/* Mobile */
+@media (max-width:576px){
+
+  .contact-number{
+    font-size:28px;
+  }
+
+  .contact-left{
+    padding:40px 20px;
+  }
+
+  .info-block{
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .socials{
+    justify-content:center;
+  }
+
+  .footer-links{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+  }
+
+}
 
 /* aboutuapage */
 .firee{
@@ -1619,8 +2133,89 @@ font-size:20px !important;
 .breadcrumb .current{
     color:#fff;
 }
+/* ================================= */
+/* RESPONSIVE – ABOUT HERO FIRE + BREADCRUMB */
+/* ================================= */
+
+/* Large screens scaling */
+@media (max-width:1200px){
+
+  .firee{
+    width:700px;
+    height:700px;
+  }
+
+  .firee-left{
+    left:-420px;
+  }
+
+  .firee-right{
+    left:auto;
+    right:-420px;
+  }
+
+  .breadcrumb{
+    margin-left:80px;
+  }
+
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+  .firee{
+    width:500px;
+    height:500px;
+    opacity:0.4;
+  }
+
+  .firee-left{
+    top:-150px;
+    left:-300px;
+  }
+
+  .firee-right{
+    top:-150px;
+    right:-300px;
+    left:auto;
+  }
+
+  .breadcrumb{
+    margin-left:0;
+    text-align:center;
+    font-size:16px;
+  }
+
+}
+
+/* Mobile */
+@media (max-width:576px){
+
+  .firee{
+    width:350px;
+    height:350px;
+    opacity:0.3;
+  }
+
+  .firee-left{
+    top:-100px;
+    left:-200px;
+  }
+
+  .firee-right{
+    top:-120px;
+    right:-200px;
+  }
+
+  .breadcrumb{
+    font-size:14px;
+    margin-bottom:30px;
+  }
+
+}
 
 /* happycustomers */
+
 .happy-customers{
   background:#f3f1ee;
   padding:40px 0;
@@ -1694,7 +2289,67 @@ font-size:20px !important;
   color:#888;
 }
 
+/* ================================= */
+/* RESPONSIVE – HAPPY CUSTOMERS */
+/* ================================= */
+
+/* Remove dangerous margins on smaller screens */
+@media (max-width:1200px){
+  .happy-customers{
+    margin-left:0;
+    margin-top:0;
+    padding:60px 20px;
+  }
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+  .hc-container{
+    flex-direction:column;
+    text-align:center;
+    gap:30px;
+  }
+
+  .hc-images{
+    justify-content:center;
+  }
+
+  .hc-content h2{
+    font-size:26px;
+  }
+
+}
+
+/* Mobile */
+@media (max-width:576px){
+
+  .hc-images img{
+    width:70px;
+    height:70px;
+  }
+
+  .hc-images img:nth-child(2),
+  .hc-images img:nth-child(3){
+    margin-left:-18px;
+  }
+
+  .hc-content h2{
+    font-size:22px;
+  }
+
+  .rating-number{
+    font-size:16px;
+  }
+
+  .rating-count{
+    font-size:14px;
+  }
+
+}
+
 /* what our customers say  real experience*/
+
 .why-choose{
   background:#f3f1ee;
   padding:30px 0 80px;
@@ -1758,8 +2413,76 @@ font-size:20px !important;
   line-height:1.6;
 }
 
+/* ================================= */
+/* RESPONSIVE – WHY CHOOSE SECTION */
+/* ================================= */
+
+/* Remove negative margin below desktop */
+@media (max-width:1200px){
+  .wc-grid{
+    margin-top:0;
+  }
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+  .wc-grid{
+    flex-wrap:wrap;
+    gap:40px;
+    justify-content:center;
+  }
+
+  .wc-item{
+    width:45%;
+  }
+
+  .wc-item img{
+    width:200px;
+  }
+
+  .wc-header h2{
+    font-size:30px;
+  }
+
+}
+
+/* Mobile */
+@media (max-width:576px){
+
+  .wc-grid{
+    flex-direction:column;
+    gap:40px;
+  }
+
+  .wc-item{
+    width:100%;
+  }
+
+  .wc-item img{
+    width:180px;
+  }
+
+  .wc-header h2{
+    font-size:24px;
+  }
+
+  .wc-sub{
+    font-size:14px;
+  }
+
+  .wc-item h4{
+    font-size:16px;
+  }
+
+  .wc-item p{
+    font-size:14px;
+  }
+
+}
 
 /* video section */
+
 .video-section{
   background:#f3f1ee;     /* same beige background */
   padding:20px 0;
@@ -1824,6 +2547,65 @@ font-size:20px !important;
   border-bottom:12px solid transparent;
   margin-left:4px;
 }
+/* ================================= */
+/* RESPONSIVE – VIDEO SECTION */
+/* ================================= */
+
+/* Fluid width below large desktop */
+@media (max-width:1200px){
+
+  .video-section{
+    margin-top:0;
+    padding:40px 20px;
+  }
+
+  .video-wrapper{
+    width:100%;
+    max-width:950px;
+  }
+
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+  .video-wrapper{
+    height:auto;
+    aspect-ratio: 16 / 9;   /* keeps perfect ratio */
+  }
+
+  .play-btn{
+    width:60px;
+    height:60px;
+  }
+
+  .triangle{
+    border-left:15px solid #bb0000;
+    border-top:10px solid transparent;
+    border-bottom:10px solid transparent;
+  }
+
+}
+
+/* Mobile */
+@media (max-width:576px){
+
+  .video-wrapper{
+    aspect-ratio: 16 / 9;
+  }
+
+  .play-btn{
+    width:50px;
+    height:50px;
+  }
+
+  .triangle{
+    border-left:12px solid #bb0000;
+    border-top:8px solid transparent;
+    border-bottom:8px solid transparent;
+  }
+
+}
 
 /* menuuu */
 
@@ -1852,6 +2634,43 @@ font-size:20px !important;
     color:#fff;
 }
 
+/* ================================= */
+/* RESPONSIVE – ABOUT HERO FIRE + BREADCRUMB */
+/* ================================= */
+
+/* Large screens scaling */
+@media (max-width:1200px){
+
+
+  .breaddcrumb{
+    margin-left:80px;
+  }
+
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+
+
+  .breaddcrumb{
+    margin-left:0;
+    text-align:center;
+    font-size:16px;
+  }
+
+}
+
+/* Mobile */
+@media (max-width:576px){
+
+ 
+  .breaddcrumb{
+    font-size:14px;
+    margin-bottom:30px;
+  }
+
+}
 
 /* products */
 .productss-nav{
@@ -1902,6 +2721,69 @@ font-size:20px !important;
 .arroww-right{
     font-size:22px;
     width:20px;
+}
+/* policy */
+.breadddcrumb{
+    font-size:18px;
+    color: #FFF8F5;
+    margin-left:230px;
+    margin-bottom:50px;
+}
+
+.breadddcrumb a{
+    color:#FFF8F5;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.breadddcrumb a:hover{
+    color: #fff;
+}
+
+.breadddcrumb span{
+    margin:0 2px;
+}
+
+.breadddcrumb .current{
+    color:#fff;
+}
+
+/* ================================= */
+/* RESPONSIVE – ABOUT HERO FIRE + BREADCRUMB */
+/* ================================= */
+
+/* Large screens scaling */
+@media (max-width:1200px){
+
+
+  .breadddcrumb{
+    margin-left:80px;
+  }
+
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+
+
+  .breadddcrumb{
+    margin-left:0;
+    text-align:center;
+    font-size:16px;
+  }
+
+}
+
+/* Mobile */
+@media (max-width:576px){
+
+ 
+  .breadddcrumb{
+    font-size:14px;
+    margin-bottom:30px;
+  }
+
 }
 
 </style>

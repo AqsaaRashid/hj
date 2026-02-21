@@ -68,7 +68,7 @@
       <div class="footer-links">
         <a href="{{'menu'}}">Menu</a>
         <a href="#">Offers</a>
-        <a href="#">Privacy Policy</a>
+        <a href="{{'privacy'}}">Privacy Policy</a>
         <a href="#">Testimonials</a>
       </div>
     </div>
