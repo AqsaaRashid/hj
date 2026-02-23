@@ -2785,5 +2785,335 @@ font-size:20px !important;
   }
 
 }
+/* contactus */
 
+.breaddddcrumb{
+    font-size:18px;
+    color: #FFF8F5;
+    margin-left:120px;
+    margin-bottom:50px;
+}
+
+.breaddddcrumb a{
+    color:#FFF8F5;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.breaddddcrumb a:hover{
+    color: #fff;
+}
+
+.breaddddcrumb span{
+    margin:0 2px;
+}
+
+.breaddddcrumb .current{
+    color:#fff;
+}
+
+/* ================================= */
+/* RESPONSIVE – ABOUT HERO FIRE + BREADCRUMB */
+/* ================================= */
+
+/* Large screens scaling */
+@media (max-width:1200px){
+
+
+  .breaddddcrumb{
+    margin-left:80px;
+  }
+
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+
+
+  .breaddddcrumb{
+    margin-left:0;
+    text-align:center;
+    font-size:16px;
+  }
+
+}
+
+/* Mobile */
+@media (max-width:576px){
+
+ 
+  .breaddddcrumb{
+    font-size:14px;
+    margin-bottom:30px;
+  }
+
+}
+/* contactblade.. */
+
+/* MAIN WRAPPER */
+.contactt-wrapper{
+    width:1100px;
+    background: #e4ceca;  /* FULL PINK */
+    margin-left:80px;
+    padding-left:10px;
+    margin-top:60px;
+    margin-bottom:60px;
+    border-radius:12px;
+
+}
+
+.contactt-inner{
+    max-width:1100px;
+    margin:0 auto;
+    display:flex;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,0.08);
+}
+
+/* LEFT SIDE */
+.contactt-left{
+    width:42%;
+    background: #BB0000;
+    color: #fff;
+    padding:40px 40px;
+    display:flex;
+    border-radius:12px;
+    flex-direction:column;
+    margin-top:5px;
+    margin-bottom:5px;
+
+    justify-content:space-between;
+}
+
+.contactt-left h3{
+    font-family:'Holtwood One SC', serif;
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.contactt-left p{
+    font-size:14px;
+    opacity:0.9;
+    margin-bottom:40px;
+    color:#C9C9C9;
+}
+
+.contactt-info{
+    display:flex;
+    flex-direction:column;
+    gap:35px;
+        color:#C9C9C9;
+
+}
+
+.contactt-info div{
+    display:flex;
+    gap:15px;
+    align-items:flex-start;
+    font-size:15px;
+        color:#C9C9C9;
+
+}
+
+.contactt-info i{
+
+    font-size:18px;
+    margin-top:3px;
+    color: #fff
+}
+.neww{
+  margin-top:110px;
+}
+
+.social{
+    margin-top:90px;
+    display:flex;
+    gap:15px;
+}
+
+.social i{
+    background:#fff;
+    color:#c40000;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    cursor:pointer;
+}
+
+/* RIGHT SIDE */
+.contactt-right{
+    width:58%;
+    padding:50px 60px;
+}
+.form-row{
+    display:flex;
+    gap:40px;
+    margin-bottom:30px;
+}
+
+.form-group{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.form-group label{
+    font-size:12px;
+    margin-bottom:8px;
+    color:#555;
+}
+
+.form-group input{
+    border:none;
+    border-bottom:2px solid #999;
+    background:transparent;
+    padding:8px 0;
+    font-size:14px;
+    outline:none;
+}
+
+.subject{
+    margin-bottom:30px;
+}
+
+.subject label{
+    font-size:13px;
+    margin-bottom:10px;
+    display:block;
+}
+
+.subject-options{
+    display:flex;
+    gap:20px;
+    font-size:14px;
+    color:#444;
+}
+
+.subject-options input{
+    margin-right:5px;
+}
+.subject-options input[type="radio"]{
+    accent-color: #000;   /* black radio */
+    width:14px;
+    height:14px;
+}
+.message{
+    margin-bottom:40px;
+}
+
+.message textarea{
+    width:100%;
+    border:none;
+    border-bottom:2px solid #999;
+    background:transparent;
+    resize:none;
+    padding:8px 0 2px 0;   /* less bottom padding */
+    height:40px;
+    outline:none;
+    font-size:14px;
+}
+
+/* BUTTON */
+.send-btn{
+    background:#FF7D01;
+    color:#fff;
+    border:none;
+    padding:14px 40px;
+    border-radius:6px;
+    font-size:14px;
+    cursor:pointer;
+    float:right;
+}
+
+.send-btn:hover{
+    opacity:0.9;
+}
+
+/* RESPONSIVE */
+@media(max-width:992px){
+    .contactt-wrapper{
+        flex-direction:column;
+    }
+    .contactt-left,
+    .contactt-right{
+        width:100%;
+    }
+    .form-row{
+        flex-direction:column;
+        gap:20px;
+    }
+}
+@media (max-width:1200px){
+    .contactt-wrapper{
+        width:95%;
+        margin-left:auto;
+        margin-right:auto;
+    }
+}
+@media(max-width:992px){
+
+    .contactt-wrapper{
+        width:95%;
+        margin:60px auto;
+        padding-left:0;
+    }
+
+    .contactt-inner{
+        flex-direction:column;
+    }
+
+    .contactt-left,
+    .contactt-right{
+        width:100%;
+    }
+
+    .contactt-left{
+        border-radius:12px 12px 0 0;
+    }
+
+    .contactt-right{
+        border-radius:0 0 12px 12px;
+        padding:40px 30px;
+    }
+
+    .form-row{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .social{
+        margin-top:40px;
+    }
+}
+@media(max-width:576px){
+
+    .contactt-wrapper{
+        width:92%;
+        margin:40px auto;
+    }
+
+    .contactt-left{
+        padding:30px 25px;
+    }
+
+    .contactt-right{
+        padding:30px 25px;
+    }
+
+    .subject-options{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .send-btn{
+        width:100%;
+        float:none;
+    }
+}
 </style>

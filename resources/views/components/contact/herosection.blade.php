@@ -62,13 +62,13 @@
         <div class="hero-content">
 
     <h1>
-        <span>Privacy</span> Policy
+        <span>CONTACT</span> 
     </h1>
 
-    <div class="breadddcrumb">
-        <a href="/">Home</a>
+    <div class="breaddddcrumb">
+        <a href="#">Home</a>
         <span>|</span>
-        <span class="current">Privacy Policy</span>
+        <span class="current">Contact</span>
     </div>
 
 </div>
