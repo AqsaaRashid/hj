@@ -64,13 +64,13 @@
         <div class="hero-content">
 
     <h1>
-        <span>Privacy</span> Policy
+        <span>FAQ'S</span> 
     </h1>
 
-    <div class="breadddcrumb">
-        <a href="/">Home</a>
+    <div class="breeaddcrumb" >
+        <a href="#">Home</a>
         <span>|</span>
-        <span class="current">Privacy Policy</span>
+        <span class="current">FAQ's</span>
     </div>
 
 </div>

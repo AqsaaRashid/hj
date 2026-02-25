@@ -48,6 +48,9 @@
         src="https://www.google.com/maps?q=Hangry+Joe's+Hot+Chicken+%26+Wings+Glendale+Heights&output=embed"
         loading="lazy">
       </iframe>
+      <a href="#" class="map-logo">
+  <img src="{{ asset('images/logo.png') }}" alt="Hangry Joe's Logo" />
+</a>
     </div>
 
   </div>
@@ -56,7 +59,13 @@
   <!-- RED CTA STRIP -->
   <div class="cta-strip">
     <h3>CRAVINGS CAN’T WAIT.</h3>
-    <a href="#" class="cta-btn">Order Now</a>
+   <div class="app-buttons">
+  <a href="#" class="app-btn google-play" aria-label="Get it on Google Play">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play Store" />
+  </a>
+  <a href="#" class="app-btn app-store" aria-label="Download on the App Store">
+<img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />  </a>
+</div>
   </div>
 
 

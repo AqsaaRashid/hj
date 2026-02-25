@@ -59,12 +59,11 @@ body{
   background:linear-gradient(to bottom,#111,#000);
   padding:18px 0;
   z-index: 5;
-      overflow: hidden !important;
+  overflow: hidden !important;
 
 }
 
 .nav-container{
-  max-width:1200px;
   display:flex;
   margin-top:-20px;
   align-items:center;
@@ -81,10 +80,10 @@ body{
 /* Center Menu */
 .nav-menu{
   display:flex;
-  gap:58px;
+  gap:48px;
   list-style:none;
   margin-top:-60px;
-  margin-left:230px;
+  margin-left:200px;
 }
 
 .nav-menu li a{
@@ -104,9 +103,17 @@ body{
   display:flex;
   align-items:center;
   gap:20px;
-  margin-left:120px;
+  margin-left:115px;
   margin-top:-70px;
 }
+.navv-right{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  margin-left:130px;
+  margin-top:-70px;
+}
+
 
 .icon-btn{
   color:#fff;
@@ -217,7 +224,7 @@ body{
     font-size:18px;
     padding-left:30px;
     position:relative;
-    margin-left:-25px;
+    margin-left:2px;
 }
 
 .hero-list li::before{
@@ -688,8 +695,10 @@ body{
 /* hero real */
 
 .categories{
-  padding:80px 0;
+  max-width:1150px;
+  padding:80px 0 !important;
   background:#f3f1ee;
+  margin-left:55px;
 }
 
 .categories-header{
@@ -1036,6 +1045,8 @@ body{
 
 .products{
   padding: 0;
+  margin-left:55px;
+  max-width:1150px;
   background:#f3f1ee;
   margin-top:-30px !important;
 }
@@ -1995,6 +2006,42 @@ font-size:20px !important;
   color:#333;
   text-decoration:none;
   font-size:14px;
+}
+.app-buttons {
+  display: flex;
+  gap: 12px;
+  margin-right: 20px !important; /* keep existing margin */
+}
+
+.app-btn img {
+  height: 40px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+.contact-map {
+  position: relative; /* ensure positioning context */
+}
+
+.map-logo {
+  position: absolute;
+  bottom:-15px;
+  right: 0px;
+  width: 150px;    /* adjust size as needed */
+  height:150px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-logo img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
 }
 /* ================================= */
 /* RESPONSIVE – CONTACT SECTION */
@@ -3116,4 +3163,68 @@ font-size:20px !important;
         float:none;
     }
 }
+
+/* faqs */
+
+
+.breeaddcrumb{
+    font-size:18px;
+    color: #FFF8F5;
+    margin-left:40px;
+    margin-bottom:50px;
+    margin-top:10px;
+}
+
+.breeaddcrumb a{
+    color:#FFF8F5;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.breeaddcrumb a:hover{
+    color: #fff;
+}
+
+.breeaddcrumb span{
+    margin:0 2px;
+}
+
+.breeaddcrumb .current{
+    color:#fff;
+}
+@media (max-width:1200px){
+
+
+ .breeaddcrumb{
+    margin-left:80px;
+  }
+
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+
+
+.breeaddcrumb{
+    margin-left:0;
+    text-align:center;
+    font-size:16px;
+  }
+
+}
+
+/* Mobile */
+@media (max-width:576px){
+
+ 
+  .breeaddcrumb{
+    font-size:14px;
+    margin-bottom:30px;
+  }
+
+}
+
+/* ... */
+
 </style>

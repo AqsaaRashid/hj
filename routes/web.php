@@ -18,3 +18,6 @@ Route::get('privacy', function () {
 Route::get('contact', function () {
     return view('contact');
 });
+Route::get('faqs', function () {
+    return view('faqs');
+});

@@ -31,10 +31,12 @@
       <li><a href="{{'about'}}">ABOUT</a></li>
       <li><a href="{{'menu'}}">MENU</a></li>
       <li><a href="{{'contact'}}">CONTACT</a></li>
+      <li><a href="{{'faqs'}}">FAQ's</a></li>
+
     </ul>
 
     <!-- Right -->
-    <div class="nav-right">
+    <div class="navv-right">
       <div class="icon-btn">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
