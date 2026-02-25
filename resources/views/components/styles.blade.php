@@ -814,6 +814,10 @@ body{
 
 /* Large Laptop (3 columns) */
 @media (max-width:1200px){
+  .categories{
+    margin-left:0px !important;
+
+  }
   .categories-grid{
     grid-template-columns:repeat(3,1fr);
   }
@@ -839,6 +843,8 @@ body{
 
   .categories{
     padding:60px 15px;
+    margin-left:0px !important;
+
   }
 
   .categories-header{
