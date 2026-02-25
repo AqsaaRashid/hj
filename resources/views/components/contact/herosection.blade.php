@@ -36,7 +36,7 @@
     </ul>
 
     <!-- Right -->
-    <div class="navv-right">
+    <div class="nav-right">
       <div class="icon-btn">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
