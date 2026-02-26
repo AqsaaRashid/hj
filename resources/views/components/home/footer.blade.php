@@ -35,9 +35,9 @@
       </div>
 
       <div class="socials">
-        <a href="#"><i class="bi bi-linkedin"></i></a>
-        <a href="#"><i class="bi bi-instagram"></i></a>
-        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.linkedin.com/company/111384229/"><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.instagram.com/hangryjoes_gh/"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.facebook.com/HangryJoesGlendaleHeights"><i class="bi bi-facebook"></i></a>
       </div>
 
     </div>
@@ -49,7 +49,7 @@
         loading="lazy">
       </iframe>
       <a href="#" class="map-logo">
-  <img src="{{ asset('images/logo.png') }}" alt="Hangry Joe's Logo" />
+  <img src="{{ asset('images/logoo.png') }}" alt="Hangry Joe's Logo" />
 </a>
     </div>
 
@@ -76,9 +76,9 @@
 
       <div class="footer-links">
         <a href="{{'menu'}}">Menu</a>
-        <a href="#">Offers</a>
+        <a href="#savings">Offers</a>
         <a href="{{'privacy'}}">Privacy Policy</a>
-        <a href="#">Testimonials</a>
+        <a href="#testimonials">Testimonials</a>
       </div>
     </div>
   </div>

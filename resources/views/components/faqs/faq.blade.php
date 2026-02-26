@@ -135,6 +135,7 @@
 
 .headingg h2 span{
   color:#c40000;
+  
 }
 
 .headingg p{
@@ -267,6 +268,214 @@
     justify-content:center;
   }
 }
+
+/* POPUP OVERLAY */
+.chat-popup-overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.chat-popup-box{
+  width:360px;
+  background:#f4efed;
+  border-radius:10px;
+  overflow:hidden;
+  font-family:'Poppins', sans-serif;
+}
+
+/* HEADER */
+.chat-popup-header{
+    font-family:'Holtwood One SC', serif;
+
+  background: #BB0000;
+  padding:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.header-left{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.header-logo{
+  width:55px;
+}
+
+.chat-popup-header h3{
+  margin:0;
+  color:#fff;
+  font-weight:100;
+  font-size:17px;
+}
+
+.chat-popup-header h3 span{
+  color: #F6C507;
+}
+
+.close-popup{
+  color:#fff;
+  margin-top:-16px !important;
+  gap:20px;
+  font-size:29px;
+  cursor:pointer;
+}
+
+/* BODY */
+.chat-popup-body{
+  padding-top:20px;
+  padding-right:50px;
+  margin-bottom:-37px;
+
+}
+
+/* MESSAGE BLOCK */
+.chat-message-wrapper{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.small-logo{
+  width:60px;
+  font-weight:bolder;
+}
+
+.chat-message{
+  background: #F8DFDD;
+  padding:15px;
+  border-radius:10px;
+  font-size:14px;
+  flex:1;
+}
+
+/* OPTIONS OUTER BORDER BOX */
+.chat-options-box{
+  border:1px solid #ddd;
+  padding:15px;
+  max-width:280px;
+  border-radius:6px;
+  margin-left:70px;
+  background:#f8f6f5;
+}
+
+/* INDIVIDUAL OPTION */
+.chat-option{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:5px;
+  border:1px solid #ddd;
+  border-radius:4px;
+  background:#fff;
+  margin-bottom:12px;
+  font-weight:500;
+  cursor:pointer;
+}
+
+.chat-option:last-child{
+  margin-bottom:0;
+}
+
+.chat-option i{
+  color: #BB0000;
+  font-size:18px;
+}
+
+/* POWERED BY */
+.chat-powered{
+  text-align:center;
+  font-size:12px;
+  margin-top:55px;     /* pushed more down */
+  color:#666;
+  display:flex;        /* same row */
+  justify-content:center;
+  align-items:center;
+  gap:6px;
+  margin-left:75px;
+}
+
+.powered-img{
+  width:100px;
+  margin-left:2px;
+  vertical-align:middle;
+}
+/* ================= POPUP RESPONSIVE ================= */
+
+@media (max-width: 768px){
+
+  .chat-popup-box{
+    width:90%;
+    max-width:360px;
+  }
+
+  .chat-popup-body{
+    padding:20px;
+    margin-bottom:0;
+  }
+
+  .chat-options-box{
+    margin:20px auto 0 auto;  /* center properly */
+    max-width:100%;
+  }
+
+  .chat-powered{
+    margin-left:0;
+    margin-top:30px;
+    flex-wrap:wrap;
+  }
+
+}
+
+@media (max-width: 480px){
+
+  .chat-popup-box{
+    width:95%;
+    border-radius:12px;
+  }
+
+  .header-logo{
+    width:45px;
+  }
+
+  .chat-popup-header h3{
+    font-size:15px;
+  }
+
+  .close-popup{
+    font-size:24px;
+  }
+
+  .small-logo{
+    width:45px;
+  }
+
+  .chat-message{
+    font-size:13px;
+    padding:12px;
+  }
+
+  .chat-option{
+    font-size:14px;
+    padding:8px;
+  }
+
+  .powered-img{
+    width:80px;
+  }
+
+}
 </style>
 
 
@@ -348,16 +557,67 @@
     </div>
 
    <div class="chat-area">
-    <img src="{{ asset('images/logo.png') }}" class="angry-img">
+    <img src="{{ asset('images/logoo.png') }}" class="angry-img">
 
-    <a href="#" class="btnn">
-        <i class="bi bi-chat-dots"></i> Chat with Us
+<a href="javascript:void(0)" class="btnn" id="openChatPopup">
+          <i class="bi bi-chat-dots"></i> Chat with Us
     </a>
 </div>
   </div>
 
 </div>
+<!-- popup -->
+<!-- CHAT POPUP -->
+<div id="chatPopup" class="chat-popup-overlay">
 
+  <div class="chat-popup-box">
+
+    <!-- HEADER -->
+    <div class="chat-popup-header">
+      <div class="header-left">
+        <img src="{{ asset('images/logoo.png') }}" class="header-logo">
+        <h3>HAVE A <span>QUESTION?</span></h3>
+      </div>
+      <span class="close-popup" id="closeChatPopup">⌄</span>
+    </div>
+
+    <!-- BODY -->
+    <div class="chat-popup-body">
+
+      <!-- MESSAGE WITH SMALL LOGO -->
+      <div class="chat-message-wrapper">
+        <img src="{{ asset('images/logoo.png') }}" class="small-logo">
+        <div class="chat-message">
+          Choose a chat option to get <br>started.
+        </div>
+      </div>
+
+      <!-- OPTIONS BOX -->
+      <div class="chat-options-box">
+
+        <div class="chat-option">
+          <i class="bi bi-chat"></i>
+          Chat via SMS/Email
+        </div>
+
+        <div class="chat-option">
+          <i class="bi bi-chat-dots"></i>
+          Chat via Live Chat
+        </div>
+
+      </div>
+
+      <!-- POWERED BY IMAGE -->
+      <div class="chat-powered">
+        Powered by
+        <img src="{{ asset('images/powered.png') }}" class="powered-img">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 <script>
 document.querySelectorAll(".accordion-header").forEach(header=>{
   header.addEventListener("click", function(){
@@ -366,3 +626,22 @@ document.querySelectorAll(".accordion-header").forEach(header=>{
 });
 </script>
 
+<script>
+const openBtn = document.getElementById("openChatPopup");
+const popup = document.getElementById("chatPopup");
+const closeBtn = document.getElementById("closeChatPopup");
+
+openBtn.addEventListener("click", function(){
+  popup.style.display = "flex";
+});
+
+closeBtn.addEventListener("click", function(){
+  popup.style.display = "none";
+});
+
+window.addEventListener("click", function(e){
+  if(e.target === popup){
+    popup.style.display = "none";
+  }
+});
+</script>

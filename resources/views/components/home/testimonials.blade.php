@@ -1,7 +1,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-<section class="testimonials">
+<section class="testimonials" id="testimonials">
   <div class="t-container">
 
     <div class="t-head">

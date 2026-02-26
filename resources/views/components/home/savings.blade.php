@@ -1,4 +1,4 @@
-<section class="exclusive">
+<section class="exclusive" id="savings">
   <div class="exclusive-wrapper">
 
     <!-- LEFT SIDE -->

@@ -159,7 +159,7 @@
 
         <div class="content-section">
             <h2>Introduction</h2>
-            <p>At Hangry Joe's, accessible from [website link], one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Hangry Joe's and how we use it.</p>
+            <p>At Hangry Joe's, accessible from hangryjoesgh.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Hangry Joe's and how we use it.</p>
         </div>
 
         <div class="content-section">

@@ -18,11 +18,19 @@
             </div>
         </div>
 
-        <div class="social">
-            <i class="bi bi-linkedin"></i>
-            <i class="bi bi-instagram"></i>
-            <i class="bi bi-facebook"></i>
-        </div>
+       <div class="social">
+  <a href="https://www.linkedin.com/company/111384229/" target="_blank">
+    <i class="bi bi-linkedin"></i>
+  </a>
+
+  <a href="https://www.instagram.com/hangryjoes_gh/" target="_blank">
+    <i class="bi bi-instagram"></i>
+  </a>
+
+  <a href="https://www.facebook.com/HangryJoesGlendaleHeights" target="_blank">
+    <i class="bi bi-facebook"></i>
+  </a>
+</div>
 </div>
     </div>
 

@@ -2405,19 +2405,19 @@ font-size:20px !important;
 
 /* what our customers say  real experience*/
 
-.why-choose{
+.whyy-choose{
   background:#f3f1ee;
   padding:30px 0 80px;
   text-align:center;
 }
 
-.wc-container{
+.wcc-container{
   max-width:1100px;
   margin:auto;
 }
 
 /* HEADER */
-.wc-sub{
+.wcc-sub{
   display:block;
   color:#ff7d01;
   font-size:16px;
@@ -2425,43 +2425,44 @@ font-size:20px !important;
   font-weight:400;
 }
 
-.wc-header h2{
+.wcc-header h2{
   font-family:'Holtwood One SC', serif;
   font-size:38px;
   margin:0 0 60px;
   color:#111;
 }
 
-.wc-header h2 span{
+.wcc-header h2 span{
   color:#bb0000;
 }
 
 /* GRID */
-.wc-grid{
+.wcc-grid{
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
   margin-top:-30px;
+  margin-left:40px;
 }
 
 /* ITEM */
-.wc-item{
+.wcc-item{
   width:33.33%;
 }
 
-.wc-item img{
+.wcc-item img{
   width:260px; /* adjust to match your image proportions */
   height:auto;
   margin-bottom:0px;
 }
 
-.wc-item h4{
+.wcc-item h4{
   font-size:18px;
   font-weight:800;
   color:#111;
 }
 
-.wc-item p{
+.wcc-item p{
   font-size:16px;
   color: #333333;
   font-weight:800px;
@@ -2474,7 +2475,7 @@ font-size:20px !important;
 
 /* Remove negative margin below desktop */
 @media (max-width:1200px){
-  .wc-grid{
+  .wcc-grid{
     margin-top:0;
   }
 }
@@ -2482,21 +2483,21 @@ font-size:20px !important;
 /* Tablet */
 @media (max-width:992px){
 
-  .wc-grid{
+  .wcc-grid{
     flex-wrap:wrap;
     gap:40px;
     justify-content:center;
   }
 
-  .wc-item{
+  .wcc-item{
     width:45%;
   }
 
-  .wc-item img{
+  .wcc-item img{
     width:200px;
   }
 
-  .wc-header h2{
+  .wcc-header h2{
     font-size:30px;
   }
 
@@ -2505,32 +2506,32 @@ font-size:20px !important;
 /* Mobile */
 @media (max-width:576px){
 
-  .wc-grid{
+  .wcc-grid{
     flex-direction:column;
     gap:40px;
   }
 
-  .wc-item{
+  .wcc-item{
     width:100%;
   }
 
-  .wc-item img{
+  .wcc-item img{
     width:180px;
   }
 
-  .wc-header h2{
+  .wcc-header h2{
     font-size:24px;
   }
 
-  .wc-sub{
+  .wcc-sub{
     font-size:14px;
   }
 
-  .wc-item h4{
+  .wcc-item h4{
     font-size:16px;
   }
 
-  .wc-item p{
+  .wcc-item p{
     font-size:14px;
   }
 

@@ -124,7 +124,7 @@ any sauce.</p>
     </div>
 
     <div class="btn-wrapper">
-      <a href="#" class="explore-btn">Explore Menu</a>
+      <a href="{{'menu'}}" class="explore-btn">Explore Menu</a>
     </div>
 
   </div>

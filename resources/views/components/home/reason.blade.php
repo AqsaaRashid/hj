@@ -57,7 +57,7 @@
 
       </div>
 
-      <a href="#" class="yellow-btn">More About Us</a>
+      <a href="{{'about'}}" class="yellow-btn">More About Us</a>
 
     </div>
 

@@ -8,11 +8,19 @@
       <span><i class="fa-solid fa-phone"></i> (224) 653 8034</span>
     </div>
 
-    <div class="top-right">
-      <i class="fa-brands fa-linkedin-in"></i>
-      <i class="fa-brands fa-instagram"></i>
-      <i class="fa-brands fa-facebook-f"></i>
-    </div>
+     <div class="top-right">
+  <a href="https://www.linkedin.com/company/111384229/" target="_blank">
+    <i class="fa-brands fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://www.instagram.com/hangryjoes_gh/" target="_blank">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+
+  <a href="https://www.facebook.com/HangryJoesGlendaleHeights" target="_blank">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
+</div>
   </div>
 </div>
 

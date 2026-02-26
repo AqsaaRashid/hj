@@ -9,10 +9,18 @@
     </div>
 
     <div class="top-right">
-      <i class="fa-brands fa-linkedin-in"></i>
-      <i class="fa-brands fa-instagram"></i>
-      <i class="fa-brands fa-facebook-f"></i>
-    </div>
+  <a href="https://www.linkedin.com/company/111384229/" target="_blank">
+    <i class="fa-brands fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://www.instagram.com/hangryjoes_gh/" target="_blank">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+
+  <a href="https://www.facebook.com/HangryJoesGlendaleHeights" target="_blank">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
+</div>
   </div>
 </div>
 
@@ -75,7 +83,7 @@
                 <li>Perfect for Every Craving</li>
             </ul>
 
-            <a href="#" class="hero-btn">Explore Menu</a>
+            <a href="{{'menu'}}" class="hero-btn">Explore Menu</a>
         </div>
 
         <div class="hero-image">
