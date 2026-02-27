@@ -698,8 +698,8 @@ body{
 .categories{
   padding-top:80px  !important;
   background:#f3f1ee;
-  margin-left:30px;
-  margin-right:30px;
+  padding-left:30px;
+  padding-right:30px;
   margin-top:-20px;
 }
 
@@ -1056,8 +1056,8 @@ body{
 
 .products{
   padding: 0;
-  margin-left:30px;
-  margin-right:30px;
+  padding-left:30px;
+  padding-right:30px;
   background:#f3f1ee;
   margin-top:-30px !important;
 }
@@ -2189,7 +2189,8 @@ font-size:20px !important;
     font-size:18px;
     color: #FFF8F5;
     margin-left:140px;
-    margin-bottom:50px;
+    margin-bottom:70px;
+    margin-top:10px;
 }
 
 .breadcrumb a{
@@ -2475,6 +2476,7 @@ font-size:20px !important;
   width:260px; /* adjust to match your image proportions */
   height:auto;
   margin-bottom:0px;
+  margin-left:50px;
 }
 
 .wcc-item h4{
@@ -2487,7 +2489,8 @@ font-size:20px !important;
   font-size:16px;
   color: #333333;
   font-weight:800px;
-  line-height:1.6;
+  margin-top:10px;
+  line-height:1.2;
 }
 
 /* ================================= */
