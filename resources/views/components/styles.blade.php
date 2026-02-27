@@ -1255,11 +1255,11 @@ body{
 
 .exclusive-wrapper{
   height:290px;
-  margin-left:40px;
-  margin-right:40px;
   display:flex;
   border-radius:8px;
   overflow:hidden;
+  padding-left:40px;
+  padding-right:40px;
 }
 
 /* LEFT SIDE */
