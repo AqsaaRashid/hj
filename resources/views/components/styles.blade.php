@@ -2030,7 +2030,11 @@ font-size:20px !important;
 .contact-map {
   position: relative; /* ensure positioning context */
 }
-
+.map-logo{
+  position: fixed;
+  bottom: 20px;   /* tweak if you want */
+  right: 20px;    /* tweak if you want */
+}
 .map-logo {
   position: absolute;
   bottom:-15px;
