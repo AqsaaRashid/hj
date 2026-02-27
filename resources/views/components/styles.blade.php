@@ -7,7 +7,7 @@
 
 body{
   font-family:'Poppins',sans-serif;
-  background: #f3f1ee !important;
+  background: #FFF8F5 !important;
 }
 
 /* ===== TOP BAR ===== */
@@ -170,7 +170,7 @@ body{
 /* heroooo */
 .hero{
     position:relative;
-    background: #000000;
+     background: radial-gradient(circle at center, #323232 0%, #000000 70%);
     padding:160px 0 140px;
     overflow:hidden;
     margin-top:-170px;
@@ -792,7 +792,7 @@ body{
 
 /* LEFT ARROW */
 .arrow-light{
-  background:#fff;
+  background-color: #FFF8F5 !important;
   border:1px solid #BB0000;
 }
 
@@ -2693,8 +2693,8 @@ font-size:20px !important;
     font-size:18px;
     color: #FFF8F5;
     margin-left:60px;
-    margin-bottom:50px;
-}
+    margin-bottom:70px;
+    margin-top:10px;}
 
 .breaddcrumb a{
     color:#FFF8F5;
@@ -2871,7 +2871,9 @@ font-size:20px !important;
     font-size:18px;
     color: #FFF8F5;
     margin-left:120px;
-    margin-bottom:50px;
+    margin-bottom:70px;
+   margin-top:10px;
+
 }
 
 .breaddddcrumb a{
@@ -3204,7 +3206,7 @@ font-size:20px !important;
     font-size:18px;
     color: #FFF8F5;
     margin-left:40px;
-    margin-bottom:50px;
+    margin-bottom:70px;
     margin-top:10px;
 }
 

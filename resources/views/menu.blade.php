@@ -6,6 +6,7 @@
        @include('components.home.herosection')
 
        @include('components.menu.products')
+       @include('components.home.savings')
 
        @include('components.home.footer')
 
