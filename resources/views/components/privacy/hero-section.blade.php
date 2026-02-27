@@ -38,8 +38,9 @@
       <li><a href="{{'/'}}">HOME</a></li>
       <li><a href="{{'about'}}">ABOUT</a></li>
       <li><a href="{{'menu'}}">MENU</a></li>
+            <li><a href="{{'faqs'}}">FAQ's</a></li>
+
       <li><a href="{{'contact'}}">CONTACT</a></li>
-      <li><a href="{{'faqs'}}">FAQ's</a></li>
 
     </ul>
 

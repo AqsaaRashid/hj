@@ -154,7 +154,6 @@
 
     <div class="container">
         <div class="header">
-            <h1>Privacy Policy of <span>Hangry Joe's</span></h1>
         </div>
 
         <div class="content-section">

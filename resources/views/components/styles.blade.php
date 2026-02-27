@@ -74,7 +74,7 @@ body{
 /* Logo */
 .logo img{
   height:150px;
-  margin-left:10px;
+  margin-left:15px;
 }
 
 /* Center Menu */
@@ -185,7 +185,7 @@ body{
     justify-content:space-between;
     position:relative;
     z-index:2;
-    margin-top:-60px;
+    margin-top:-58px;
     overflow: hidden !important;
 }
 
@@ -199,7 +199,7 @@ body{
     font-size:20px;
     font-weight:400;
     margin-bottom:20px;
-    color:#ccc;
+    color:#FFF8F5;
 }
 
 .hero-content h1{
@@ -231,6 +231,7 @@ body{
     content:"✔";
     position:absolute;
     left:0;
+    padding-left:4px;
     color: #000;
     border:2px solid #FFCE12;
     background: #FFCE12;
@@ -695,10 +696,11 @@ body{
 /* hero real */
 
 .categories{
-  max-width:1150px;
-  padding:80px 0 !important;
+  padding-top:80px  !important;
   background:#f3f1ee;
-  margin-left:55px;
+  margin-left:30px;
+  margin-right:30px;
+  margin-top:-20px;
 }
 
 .categories-header{
@@ -898,6 +900,9 @@ body{
     font-family: 'Holtwood One SC', serif !important;
 
 }
+.description{
+  margin-top:10px;
+}
 
 .reasons-right h2 span{
   color:#BB0000;
@@ -919,8 +924,8 @@ body{
 .shape-icon{
   position:absolute;
   width:99px;
-  top:80px;   /* adjust to match your screenshot */
-  left:-40px;
+  top:60px;   /* adjust to match your screenshot */
+  left:-20px;
   z-index:3;
 }
 
@@ -1051,8 +1056,8 @@ body{
 
 .products{
   padding: 0;
-  margin-left:55px;
-  max-width:1150px;
+  margin-left:30px;
+  margin-right:30px;
   background:#f3f1ee;
   margin-top:-30px !important;
 }
@@ -1103,6 +1108,7 @@ body{
 /* CONTENT */
 .product-content{
   flex:1;
+  margin-top:-7px;
 }
 
 .top-row{
@@ -1164,6 +1170,7 @@ body{
   text-decoration:none;
   font-weight:600;
   transition:0.3s ease;
+  margin-top:-30px;
 }
 
 .explore-btn:hover{
@@ -1242,14 +1249,14 @@ body{
 /* savings */
 
 .exclusive{
-  padding:80px 0;
+  padding:60px 0;
   background:#f3f1ee;
 }
 
 .exclusive-wrapper{
-  width:1100px;      /* from your layout screenshot */
   height:290px;
-  margin:auto;
+  margin-left:40px;
+  margin-right:40px;
   display:flex;
   border-radius:8px;
   overflow:hidden;
@@ -1261,6 +1268,8 @@ body{
   background:#e9d8d3;
   padding:30px;
   position:relative;
+  margin-top:-5px;
+
 }
 
 /* Vertical Line */
@@ -1270,7 +1279,7 @@ body{
   left:50px;
   top:110px;
   width:4px;
-  height:160px;
+  height:120px;
   background:#ccc;
 }
 .exclusive-left{
@@ -1285,7 +1294,7 @@ body{
   left:50px;
   top:120px;
   width:4px;
-  height:140px;
+  height:150px;
   background: #D9D9D9;
   border-radius:20px;
 }
@@ -1295,7 +1304,7 @@ body{
   content:"";
   position:absolute;
   left:50px;
-  top:120px;
+  top:110px;
   width:4px;
   height:20px;        /* small top section */
   background: #B5B5B5; /* your orange */
@@ -1333,7 +1342,7 @@ body{
 
 /* Offer Cards */
 .offer-card{
-  padding:10px 10px;
+  padding:10px 14px;
   border-radius:8px;
   background:#f1ece9;
   transition:0.3s ease;
@@ -1476,11 +1485,11 @@ font-size:20px !important;
 
 .testimonials{
   background:#f3f1ee; /* light beige */
-  padding:20px 0 90px;
+  padding:20px 0 40px;
+  margin-top:-20px;
 }
 
 .t-container{
-  max-width:1200px;
   margin:0 auto;
   padding:0 20px;
 }
@@ -1514,7 +1523,7 @@ font-size:20px !important;
 .t-stage{
   position:relative;
   height:500px; /* controls the whole block height like screenshot */
-  margin-top:-50px;
+  margin-top:-70px;
 }
 
 /* orange rectangle behind cards */
@@ -1587,7 +1596,7 @@ font-size:20px !important;
   position:absolute;
   left:50%;
   transform:translateX(-50%);
-  bottom:78px;
+  bottom:60px;
   background:#fff;
   border-radius:2px;
   padding:10px 12px;
@@ -1736,12 +1745,10 @@ font-size:20px !important;
 }
 
 .f-container{
-  max-width:1200px;
-  margin:auto;
   display:flex;
   align-items:flex-start;
   justify-content:space-between;
-  gap:60px;
+  gap:40px;
 }
 
 /* LEFT SIDE */
@@ -1888,24 +1895,31 @@ font-size:20px !important;
   color:#ff7d01;
   font-weight:600;
   margin-bottom:10px;
+    margin-left:20px;
+
 }
 
 .contact-number{
   font-size:38px;
   font-weight:800;
   margin-bottom:35px;
+    margin-left:10px;
+
 }
 
 .contact-info{
   display:flex;
   flex-direction:column;
   gap:25px;
+    margin-left:10px;
+
 }
 
 .info-block{
   display:flex;
   gap:15px;
   align-items:flex-start;
+  margin-left:2px;
 }
 
 .info-block i{
@@ -1924,6 +1938,8 @@ font-size:20px !important;
   margin-top:30px;
   display:flex;
   gap:15px;
+    margin-left:15px;
+
 }
 
 .socials a{
@@ -1963,13 +1979,14 @@ font-size:20px !important;
   display:flex;
   justify-content:space-between;
   align-items:start !important;
-  padding:10px 120px;
+  padding:25px 120px;
+  
 }
 
 .cta-strip h3{
   font-family:'Holtwood One SC', serif;
   font-size:34px;
-  margin-left:-75px !important;
+  margin-left:-60px !important;
 }
 
 .cta-btn{
@@ -2002,7 +2019,7 @@ font-size:20px !important;
   align-items:center;
 }
 .footer-container p{
-  margin-left:15px;
+  margin-left:30px;
 }
 
 .footer-links{
@@ -2018,7 +2035,7 @@ font-size:20px !important;
 .app-buttons {
   display: flex;
   gap: 12px;
-  margin-right: 20px !important; /* keep existing margin */
+  margin-right: 60px !important; /* keep existing margin */
 }
 
 .app-btn img {
