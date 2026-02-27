@@ -1,7 +1,12 @@
 <section class="products">
   <div class="container">
 
- 
+ <div class="t-head">
+      <div class="t-sub">Experience Taste in  Every Bite</div>
+      <h2 class="t-title">
+        TOP SELLING <span class="t-red">PRODUCTS</span>
+      </h2>
+    </div>
 
     <div class="products-grid">
 
