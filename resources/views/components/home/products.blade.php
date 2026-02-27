@@ -1,10 +1,7 @@
 <section class="products">
   <div class="container">
 
-    <div class="section-title">
-      <span>Experience Taste in Every Bite</span>
-      <h2>TOP SELLING <span>PRODUCTS</span></h2>
-    </div>
+ 
 
     <div class="products-grid">
 
@@ -49,7 +46,7 @@
         <div class="product-content">
           <div class="top-row">
             <h4>Loaded Fries</h4>
-            <div class="price">$3.49</div>
+            <div class="price">$11.99</div>
           </div>
 
           <div class="stars">★★★★★</div>
@@ -80,7 +77,7 @@
         <div class="product-content">
           <div class="top-row">
             <h4>Chicken Wrap</h4>
-            <div class="price">$3.49</div>
+            <div class="price">$10.99</div>
           </div>
 
           <div class="stars">★★★★★</div>
@@ -96,7 +93,7 @@ pickles & sauce.</p>
         <div class="product-content">
           <div class="top-row">
             <h4>Chicken Wings</h4>
-            <div class="price">$3.49</div>
+            <div class="price">$9.99</div>
           </div>
 
           <div class="stars">★★★★★</div>
@@ -111,7 +108,7 @@ pickles & sauce.</p>
         <div class="product-content">
           <div class="top-row">
             <h4>Chicken Bites</h4>
-            <div class="price">$3.49</div>
+            <div class="price">$10.99</div>
           </div>
 
           <div class="stars">★★★★★</div>
@@ -122,10 +119,18 @@ any sauce.</p>
       </div>
 
     </div>
-
-    <div class="btn-wrapper">
+<div class="btn-wrapper">
       <a href="{{'menu'}}" class="explore-btn">Explore Menu</a>
     </div>
 
+   
+
   </div>
 </section>
+
+
+
+
+
+
+
