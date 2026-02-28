@@ -39,7 +39,8 @@
 
         <div class="form-row">
             <div class="form-group">
-                <label>First Name</label>
+                <label style="    color:#8D8D8D;
+">First Name</label>
                 <input type="text">
             </div>
 
@@ -51,13 +52,14 @@
 
         <div class="form-row">
             <div class="form-group">
-                <label>Email</label>
+                <label style="    color:#8D8D8D;
+">Email</label>
                 <input type="email">
             </div>
 
-            <div class="form-group">
-                <label>Phone Number</label>
-                <input type="text" placeholder="+1 012 3456 789">
+            <div class="form-group" style="color: #000000 !important;">
+                <label >Phone Number</label>
+                <input type="text"class="num" placeholder="+1 012 3456 789 " >
             </div>
         </div>
 

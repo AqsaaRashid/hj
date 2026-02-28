@@ -56,11 +56,14 @@
             margin-bottom: 40px;
         }
 
-        .content-section ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
+       .content-section ul {
+    list-style: disc;
+    padding-left: 22px;
+}
 
+.content-section ul li {
+    margin-bottom: 8px;
+}
         .content-section ul li {
             font-size: 16px;
             margin-bottom: 10px;

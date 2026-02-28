@@ -2056,8 +2056,8 @@ font-size:20px !important;
   position: absolute;
   bottom:-15px;
   right: 0px;
-  width: 150px;    /* adjust size as needed */
-  height:150px;
+  width: 130px;    /* adjust size as needed */
+  height:130px;
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
@@ -2806,8 +2806,10 @@ font-size:20px !important;
 .breadddcrumb{
     font-size:18px;
     color: #FFF8F5;
-    margin-left:230px;
-    margin-bottom:50px;
+    margin-left:220px;
+    margin-bottom:70px;
+    margin-top:10px;
+
 }
 
 .breadddcrumb a{
@@ -2961,7 +2963,7 @@ font-size:20px !important;
 .contactt-left{
     width:42%;
     background: #BB0000;
-    color: #fff;
+    color: #FFF8F5;
     padding:40px 40px;
     display:flex;
     border-radius:12px;
@@ -2989,7 +2991,7 @@ font-size:20px !important;
     display:flex;
     flex-direction:column;
     gap:35px;
-        color:#C9C9C9;
+    color: #8D8D8D;
 
 }
 
@@ -3040,6 +3042,7 @@ font-size:20px !important;
     display:flex;
     gap:40px;
     margin-bottom:30px;
+    color: #000000;
 }
 
 .form-group{
@@ -3051,7 +3054,7 @@ font-size:20px !important;
 .form-group label{
     font-size:12px;
     margin-bottom:8px;
-    color:#555;
+    color:#000000;
 }
 
 .form-group input{
@@ -3065,12 +3068,15 @@ font-size:20px !important;
 
 .subject{
     margin-bottom:30px;
+       color: #000000;
+
 }
 
 .subject label{
     font-size:13px;
     margin-bottom:10px;
     display:block;
+   color: #000000;
 }
 
 .subject-options{
@@ -3090,6 +3096,7 @@ font-size:20px !important;
 }
 .message{
     margin-bottom:40px;
+   color: #8D8D8D;
 }
 
 .message textarea{
@@ -3102,6 +3109,10 @@ font-size:20px !important;
     height:40px;
     outline:none;
     font-size:14px;
+    color:#8D8D8D;
+}
+.num{
+  color: #000000 !important;
 }
 
 /* BUTTON */

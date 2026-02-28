@@ -1,4 +1,4 @@
-<section class="products" style="margin-top:40px !important;">
+<section class="products" style="margin-top:40px !important; margin-bottom:-40px;">
   <div class="container">
 
  
