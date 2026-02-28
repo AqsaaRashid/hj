@@ -6,6 +6,8 @@
   justify-content:space-between;
   padding:50px;
   margin-left:80px;
+    background: #FFF8F5 !important;
+
 }
 
 /* LEFT SIDE */

@@ -697,7 +697,7 @@ body{
 
 .categories{
   padding-top:80px  !important;
-  background:#f3f1ee;
+  background: #FFF8F5 !important;
   padding-left:30px;
   padding-right:30px;
   margin-top:-20px;
@@ -874,7 +874,7 @@ body{
   max-width: 1000px !important;
   padding:100px 0;
   margin-left:140px;
-  background: #f3f1ee;
+  background: #FFF8F5 !important;
   margin-top:-70px;
 }
 
@@ -1058,7 +1058,7 @@ body{
   padding: 0;
   padding-left:30px;
   padding-right:30px;
-  background:#f3f1ee;
+  background: #FFF8F5 !important;
   margin-top:-30px !important;
 }
 
@@ -1250,7 +1250,7 @@ body{
 
 .exclusive{
   padding:60px 0;
-  background:#f3f1ee;
+  background: #FFF8F5 !important;
 }
 
 .exclusive-wrapper{
@@ -1484,7 +1484,7 @@ font-size:20px !important;
 /* testimonials */
 
 .testimonials{
-  background:#f3f1ee; /* light beige */
+  background: #FFF8F5 !important;
   padding:20px 0 40px;
   margin-top:-20px;
 }
@@ -1739,7 +1739,7 @@ font-size:20px !important;
 /* moments */
 
 .featured{
-  background:#f3f1ee;
+  background: #FFF8F5 !important;
   padding-bottom:60px ;
   margin-top:-40px;
 }
@@ -1868,7 +1868,7 @@ font-size:20px !important;
 /* footer */
 
 .contact-section{
-  background:#f3f1ee;
+  background: #FFF8F5 !important;
 }
 
 /* BLACK + MAP SPLIT */
@@ -2294,7 +2294,7 @@ font-size:20px !important;
 /* happycustomers */
 
 .happy-customers{
-  background:#f3f1ee;
+  background: #FFF8F5 !important;
   padding:40px 0;
   margin-left:300px;
   margin-top:-80px;
@@ -2428,7 +2428,7 @@ font-size:20px !important;
 /* what our customers say  real experience*/
 
 .whyy-choose{
-  background:#f3f1ee;
+  background: #FFF8F5 !important;
   padding:30px 0 80px;
   text-align:center;
 }
@@ -2564,7 +2564,7 @@ font-size:20px !important;
 /* video section */
 
 .video-section{
-  background:#f3f1ee;     /* same beige background */
+  background: #FFF8F5 !important;
   padding:20px 0;
   display:flex;
   justify-content:center;
@@ -2932,7 +2932,10 @@ font-size:20px !important;
 
 }
 /* contactblade.. */
+.bg{
+    background: #FFF8F5 !important;
 
+}
 /* MAIN WRAPPER */
 .contactt-wrapper{
     width:1100px;

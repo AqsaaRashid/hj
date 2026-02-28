@@ -1,6 +1,6 @@
 
 
-
+<section class="bg">
 <div class="contactt-wrapper">
     <div class="contactt-inner">
 
@@ -82,3 +82,4 @@
 
 </div>
 </div>
+<section>
