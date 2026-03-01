@@ -19,8 +19,8 @@
 }
 
 .chat-popup-box{
-  width:360px;
-  background:#f4efed;
+  width:390px;
+  background: #FFF8F5 !important;
   border-radius:10px;
   overflow:hidden;
   font-family:'Poppins', sans-serif;
@@ -61,9 +61,10 @@
 .close-popup{
   color:#fff;
   margin-top:-16px !important;
-  gap:20px;
+  gap:30px;
   font-size:29px;
   cursor:pointer;
+  width:50px;
 }
 
 /* BODY */
@@ -83,8 +84,9 @@
 }
 
 .small-logo{
-  width:60px;
+  width:50px;
   font-weight:bolder;
+  margin-left:10px;
 }
 
 .chat-message{
@@ -132,13 +134,14 @@
 .chat-powered{
   text-align:center;
   font-size:12px;
-  margin-top:55px;     /* pushed more down */
+  margin-top:50px !important;     /* pushed more down */
   color:#666;
   display:flex;        /* same row */
   justify-content:center;
   align-items:center;
   gap:6px;
-  margin-left:75px;
+  margin-left:60px;
+  margin-bottom:20px;
 }
 
 .powered-img{
