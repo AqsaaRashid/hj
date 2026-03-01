@@ -1,5 +1,5 @@
-<section class="categories">
 
+<section class="categories">
   <div class="container">
 
     <div class="categories-header">
@@ -8,59 +8,66 @@
         <h2>OUR <span>CATEGORIES</span></h2>
       </div>
 
-     <div class="arrows">
-  <div class="arrow arrow-light">
-    <i class="bi bi-arrow-left"></i>
+      <div class="arrows">
+        <div class="arrow arrow-light">
+          <i class="bi bi-arrow-left"></i>
+        </div>
+        <div class="arrow arrow-dark">
+          <i class="bi bi-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+
+<div class="categories-grid" id="categoriesGrid">
+  @foreach($categories as $index => $category)
+  <div class="category-card {{ $index >= 4 ? 'hidden-category' : '' }}"
+       data-index="{{ $index }}">
+    <div class="icon">
+      <i class="{{ $category->icon_class }}"></i>
+    </div>
+    <div>
+      <h4>{{ strtoupper($category->name) }}</h4>
+      <p>{{ $category->menu_items_count }} Items</p>
+    </div>
   </div>
-  <div class="arrow arrow-dark">
-    <i class="bi bi-arrow-right"></i>
-  </div>
+  @endforeach
 </div>
 
-    </div>
-
-    <div class="categories-grid">
-
-      <div class="category-card">
-        <div class="icon">
-          <i class="bi bi-egg-fried"></i>
-        </div>
-        <div>
-          <h4>ENTREES</h4>
-          <p>18 Items</p>
-        </div>
-      </div>
-
-      <div class="category-card">
-        <div class="icon">
-          <i class="bi bi-basket2-fill"></i>
-        </div>
-        <div>
-          <h4>COMBOS</h4>
-          <p>12 Items</p>
-        </div>
-      </div>
-
-      <div class="category-card">
-        <div class="icon">
-          <i class="bi bi-cup-straw"></i>
-        </div>
-        <div>
-          <h4>MILK TEAS</h4>
-          <p>18 Items</p>
-        </div>
-      </div>
-
-      <div class="category-card">
-        <div class="icon">
-          <i class="bi bi-cup-fill"></i>
-        </div>
-        <div>
-          <h4>SLUSHIES</h4>
-          <p>13 Items</p>
-        </div>
-      </div>
-
-    </div>
   </div>
 </section>
+<script>
+let currentIndex = 0;
+let visibleItems = 4;
+
+const cards = document.querySelectorAll('.category-card');
+const totalItems = cards.length;
+
+function updateCategories() {
+    cards.forEach((card, index) => {
+        if (index >= currentIndex && index < currentIndex + visibleItems) {
+            card.classList.remove('hidden-category');
+        } else {
+            card.classList.add('hidden-category');
+        }
+    });
+}
+
+document.querySelector('.arrow-dark').addEventListener('click', function() {
+    if (currentIndex + visibleItems < totalItems) {
+        currentIndex += visibleItems;
+        updateCategories();
+    }
+});
+
+document.querySelector('.arrow-light').addEventListener('click', function() {
+    if (currentIndex - visibleItems >= 0) {
+        currentIndex -= visibleItems;
+        updateCategories();
+    }
+});
+</script>
+<style>
+  .hidden-category {
+  display: none !important;
+}
+</style>

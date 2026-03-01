@@ -6,125 +6,32 @@
     <div class="products-grid">
 
       <!-- CARD -->
-      <div class="product-card">
-        <img src="{{ asset('images/sando.png') }}"  class="product-img">
 
-        <div class="product-content">
-          <div class="top-row">
-            <h4>Chicken Sando</h4>
-            <div class="price">$10.99</div>
-          </div>
+    @foreach($products as $product)
+<div class="product-card"
+     data-category="{{ strtolower($product->category->name) }}">
 
-          <div class="stars">★★★★★</div>
+    <img src="{{ asset('storage/'.$product->image) }}" class="product-img">
 
-          <p>Fried chicken, brioche, pickles & hangry sauce.</p>
+    <div class="product-content">
+        <div class="top-row">
+            <h4>{{ $product->name }}</h4>
+            <div class="price">${{ number_format($product->price,2) }}</div>
         </div>
-      </div>
 
-      <!-- COPY SAME STRUCTURE FOR ALL CARDS -->
+        <div class="stars">★★★★★</div>
 
-      <div class="product-card">
-        <img src="{{ asset('images/waffle.png') }}"  class="product-img">
-
-        <div class="product-content">
-          <div class="top-row">
-            <h4>Waffle Fries</h4>
-            <div class="price">$3.49</div>
-          </div>
-
-          <div class="stars">★★★★★</div>
-
-          <p>Golden, crispy waffle fries with the perfect crunch.</p>
-        </div>
-      </div>
-
-      <!-- Add more cards same format -->
-       
-      <div class="product-card">
-        <img src="{{ asset('images/fries.png') }}"  class="product-img">
-
-        <div class="product-content">
-          <div class="top-row">
-            <h4>Loaded Fries</h4>
-            <div class="price">$11.99</div>
-          </div>
-
-          <div class="stars">★★★★★</div>
-
-          <p>Crispy chicken, waffle fries,jalapeños & cheese.</p>
-        </div>
-      </div>
-      
-      <div class="product-card">
-        <img src="{{ asset('images/juice.png') }}"  class="product-img">
-
-        <div class="product-content">
-          <div class="top-row">
-            <h4>Matcha Milk Tea</h4>
-            <div class="price">$3.49</div>
-          </div>
-
-          <div class="stars">★★★★★</div>
-
-          <p>Earthy matcha blended
- with creamy milk.</p>
-        </div>
-      </div>
-      
-      <div class="product-card">
-        <img src="{{ asset('images/wrap.png') }}"  class="product-img">
-
-        <div class="product-content">
-          <div class="top-row">
-            <h4>Chicken Wrap</h4>
-            <div class="price">$10.99</div>
-          </div>
-
-          <div class="stars">★★★★★</div>
-
-          <p>Crispy chicken tenders, lettuce,
-pickles & sauce.</p>
-        </div>
-      </div>
-      
-      <div class="product-card">
-        <img src="{{ asset('images/wings.png') }}"  class="product-img">
-
-        <div class="product-content">
-          <div class="top-row">
-            <h4>Chicken Wings</h4>
-            <div class="price">$9.99</div>
-          </div>
-
-          <div class="stars">★★★★★</div>
-
-          <p>Crispy, juicy chicken wings tossed in mouthwatering flavor.</p>
-        </div>
-      </div>
-      
-      <div class="product-card">
-        <img src="{{ asset('images/bites.png') }}"  class="product-img">
-
-        <div class="product-content">
-          <div class="top-row">
-            <h4>Chicken Bites</h4>
-            <div class="price">$10.99</div>
-          </div>
-
-          <div class="stars">★★★★★</div>
-
-          <p>Crispy Chicken Bites & choice of
-any sauce.</p>
-        </div>
-      </div>
-
+        <p>{{ $product->description }}</p>
+    </div>
+</div>
+@endforeach
     </div>
 <div class="productss-nav">
-    <a href="#" class="btn-sides">
+    <a href="#" class="btn-sides" data-filter="sides">
         <span class="arroww-left">←</span> Sides
     </a>
 
-    <a href="#" class="btn-combos">
+    <a href="#" class="btn-combos" data-filter="combos">
         Combos <span class="arroww-right">→</span>
     </a>
 </div>
@@ -133,3 +40,30 @@ any sauce.</p>
 
   </div>
 </section>
+<script>
+document.querySelectorAll('[data-filter]').forEach(button => {
+
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        let filterValue = this.getAttribute('data-filter');
+        let products = document.querySelectorAll('.product-card');
+
+        products.forEach(product => {
+            let category = product.getAttribute('data-category');
+
+            if(category === filterValue) {
+                product.classList.remove('hidden-product');
+            } else {
+                product.classList.add('hidden-product');
+            }
+        });
+    });
+
+});
+</script>
+<style>
+  .hidden-product {
+  display: none !important;
+}
+  </style>

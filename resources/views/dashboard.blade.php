@@ -29,7 +29,19 @@
                     Your Menu
                 </div>
 
+ <!-- Categories -->
+    <a href="{{ route('admin.categories.index') }}"
+       class="flex items-center px-4 py-3 rounded-md
+              hover:bg-gray-800 transition">
+        Categories
+    </a>
 
+    <!-- Menu Items -->
+    <a href="{{ route('admin.menu-items.index') }}"
+       class="flex items-center px-4 py-3 rounded-md
+              hover:bg-gray-800 transition">
+        Menu Items
+    </a>
             </nav>
 
             <!-- Footer -->

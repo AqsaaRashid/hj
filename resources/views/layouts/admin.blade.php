@@ -31,15 +31,20 @@
                 <div class="pt-4 text-xs uppercase tracking-wider text-gray-500">
                     Menu
                 </div>
+ <!-- Categories -->
+    <a href="{{ route('admin.categories.index') }}"
+       class="flex items-center px-4 py-3 rounded-md
+              hover:bg-gray-800 transition">
+        Categories
+    </a>
 
-                <!-- Courses -->
-                <!-- <a href="{{ route('admin.courses.index') }}"
-                   class="flex items-center px-4 py-3 rounded-md
-                   {{ request()->routeIs('admin.courses.*')
-                        ? 'bg-yellow-500 text-black font-semibold'
-                        : 'text-white hover:bg-white hover:text-black transition' }}">
-                    Manage Courses
-                </a> -->
+    <!-- Menu Items -->
+    <a href="{{ route('admin.menu-items.index') }}"
+       class="flex items-center px-4 py-3 rounded-md
+              hover:bg-gray-800 transition">
+        Menu Items
+    </a>
+              
                
 
 

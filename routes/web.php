@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Frontend\WebsiteController;
+use App\Http\Controllers\Admin\MenuItemController;
 
 Route::get('/', function () {
     return view('index');
@@ -23,6 +26,28 @@ Route::get('faqs', function () {
     return view('faqs');
 });
 
+
+// routes
+
+
+
+Route::get('/', [WebsiteController::class,'index'])->name('home');
+Route::get('/menu', [WebsiteController::class,'menu'])->name('menu');
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+
+  
+
+    // Categories CRUD
+    Route::resource('categories', CategoryController::class);
+
+    // Menu Items CRUD
+    Route::resource('menu-items', MenuItemController::class);
+
+});
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::resource('categories', CategoryController::class);
+    Route::resource('menu-items', MenuItemController::class);
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
