@@ -42,6 +42,12 @@
               hover:bg-gray-800 transition">
         Menu Items
     </a>
+    <!-- Offers -->
+<a href="{{ route('admin.offers.index') }}"
+   class="flex items-center px-4 py-3 rounded-md
+          hover:bg-gray-800 transition">
+    Offers
+</a>
             </nav>
 
             <!-- Footer -->

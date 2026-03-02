@@ -48,6 +48,9 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::resource('categories', CategoryController::class);
     Route::resource('menu-items', MenuItemController::class);
 });
+Route::resource('admin/offers', \App\Http\Controllers\Admin\OfferController::class)
+    ->names('admin.offers');
+    Route::get('/get-products', [WebsiteController::class, 'getProducts']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

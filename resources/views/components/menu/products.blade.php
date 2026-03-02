@@ -9,7 +9,7 @@
 
     @foreach($products as $product)
 <div class="product-card"
-     data-category="{{ strtolower($product->category->name) }}">
+     data-category="{{ strtolower(trim($product->category->name)) }}">
 
     <img src="{{ asset('storage/'.$product->image) }}" class="product-img">
 
@@ -59,6 +59,56 @@ document.querySelectorAll('[data-filter]').forEach(button => {
             }
         });
     });
+
+});
+</script>
+<script>
+window.addEventListener('categorySelected', function(event) {
+
+    let selectedCategory = event.detail.category;
+    let products = document.querySelectorAll('.product-card');
+
+    products.forEach(product => {
+        let productCategory = product.getAttribute('data-category');
+
+        if(productCategory === selectedCategory) {
+            product.classList.remove('hidden-product');
+        } else {
+            product.classList.add('hidden-product');
+        }
+    });
+
+});
+</script>
+<script>
+function filterProducts(selectedCategory) {
+
+    let products = document.querySelectorAll('.product-card');
+
+    products.forEach(product => {
+        let productCategory = product.getAttribute('data-category');
+
+        if(selectedCategory === "all" || productCategory === selectedCategory) {
+            product.classList.remove('hidden-product');
+        } else {
+            product.classList.add('hidden-product');
+        }
+    });
+}
+
+window.addEventListener('categorySelected', function(event) {
+    filterProducts(event.detail.category);
+});
+
+// 🔥 Auto-filter from URL on page load
+document.addEventListener('DOMContentLoaded', function() {
+
+    let params = new URLSearchParams(window.location.search);
+    let categoryFromUrl = params.get('category');
+
+    if(categoryFromUrl) {
+        filterProducts(categoryFromUrl);
+    }
 
 });
 </script>

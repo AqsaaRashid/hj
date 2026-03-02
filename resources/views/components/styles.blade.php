@@ -1273,42 +1273,39 @@ body{
 }
 
 /* Vertical Line */
-.exclusive-left::before{
-  content:"";
-  position:absolute;
-  left:50px;
-  top:110px;
-  width:4px;
-  height:120px;
-  background:#ccc;
-}
+
 .exclusive-left{
   position:relative;
 }
 
 
-/* Main grey vertical line */
-.exclusive-left::before{
-  content:"";
+.scroll-line{
   position:absolute;
-  left:50px;
-  top:120px;
-  width:4px;
-  height:150px;
-  background: #D9D9D9;
-  border-radius:20px;
-}
-
-/* Top colored highlight */
-.exclusive-left::after{
-  content:"";
-  position:absolute;
-  left:50px;
+  left:clamp(15px, 5vw, 50px);
   top:110px;
   width:4px;
-  height:20px;        /* small top section */
-  background: #B5B5B5; /* your orange */
+  height:160px;
+  background:#D9D9D9;
   border-radius:20px;
+}
+.scroll-progress{
+  width:4px;
+  height:20px;
+  background:#B5B5B5;
+  border-radius:20px;
+  transition:0.2s ease;
+}
+.offers{
+  max-height:150px;
+  overflow-y:auto;
+  scrollbar-width:none;
+}
+
+.offers::-webkit-scrollbar{
+  display:none;
+}
+.scroll-progress{
+  cursor:pointer;
 }
 
 .sub{
@@ -1338,7 +1335,30 @@ body{
   display:flex;
   flex-direction:column;
   gap:10px;
+
+  max-height:150px;     /* 2 cards ki height */
+  overflow-y:auto;      /* scroll enable */
+  padding-right:10px;   /* scrollbar space */
 }
+.offers::-webkit-scrollbar {
+  width:6px;
+}
+
+.offers::-webkit-scrollbar-thumb {
+  background:#BB0000;
+  border-radius:10px;
+}
+
+.offers::-webkit-scrollbar-track {
+  background:transparent;
+}
+/* .offers {
+  scrollbar-width: none; 
+}
+
+.offers::-webkit-scrollbar {
+  display: none; 
+} */
 
 /* Offer Cards */
 .offer-card{

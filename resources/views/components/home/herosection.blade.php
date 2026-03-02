@@ -21,7 +21,8 @@
 <div class="categories-grid" id="categoriesGrid">
   @foreach($categories as $index => $category)
   <div class="category-card {{ $index >= 4 ? 'hidden-category' : '' }}"
-       data-index="{{ $index }}">
+     data-index="{{ $index }}"
+     data-category="{{ strtolower(trim($category->name)) }}">
     <div class="icon">
       <i class="{{ $category->icon_class }}"></i>
     </div>
@@ -64,6 +65,38 @@ document.querySelector('.arrow-light').addEventListener('click', function() {
         currentIndex -= visibleItems;
         updateCategories();
     }
+});
+</script>
+<script>
+document.querySelectorAll('.category-card').forEach(card => {
+
+    card.addEventListener('click', function() {
+
+        let selectedCategory = this.getAttribute('data-category');
+
+        // If we are NOT on /menu → go to menu
+        if (!window.location.pathname.includes('/menu')) {
+            window.location.href = "/menu?category=" + selectedCategory;
+            return;
+        }
+
+        // If we ARE on menu → filter only
+        window.history.pushState({}, '', '/menu?category=' + selectedCategory);
+
+        let products = document.querySelectorAll('.product-card');
+
+        products.forEach(product => {
+            let category = product.getAttribute('data-category');
+
+            if(category === selectedCategory) {
+                product.classList.remove('hidden-product');
+            } else {
+                product.classList.add('hidden-product');
+            }
+        });
+
+    });
+
 });
 </script>
 <style>
