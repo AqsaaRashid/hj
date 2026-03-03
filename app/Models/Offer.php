@@ -11,6 +11,12 @@ class Offer extends Model
         'description',
         'status',
         'is_active',
-        'sort_order'
+        'sort_order',
+        'promo_code',
+       'discount_type',
+       'discount_value',
+      'min_order_amount',
+      'is_active',
+      'expires_at'
     ];
 }

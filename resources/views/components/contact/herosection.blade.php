@@ -50,12 +50,12 @@
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
 
-      <div class="icon-btn">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <div class="cart-count">5</div>
-      </div>
+     <div class="icon-btn cart-trigger">
+  <i class="fa-solid fa-cart-shopping"></i>
+  <div class="cart-count" id="cartCount">0</div>
+</div>
 
-      <a href="#" class="order-btn">
+      <a href="{{'menu'}}" class="order-btn">
         <i class="fa-solid fa-motorcycle"></i> ORDER NOW
       </a>
     </div>

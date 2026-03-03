@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Frontend\WebsiteController;
 use App\Http\Controllers\Admin\MenuItemController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('index');
@@ -30,30 +34,70 @@ Route::get('faqs', function () {
 // routes
 
 
+// cart
 
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart/get', [CartController::class, 'getCart'])->name('cart.get');
+Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+// checkout
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::post('/apply-promo', [CheckoutController::class, 'applyPromo'])->name('promo.apply');
+Route::post('/checkout/next', [CheckoutController::class, 'storeCustomer'])->name('checkout.next');
+Route::get('/payment', [CheckoutController::class, 'payment'])->name('payment');
+Route::post('/checkout/next', [CheckoutController::class, 'next'])->name('checkout.next');
+Route::post('/place-order', [CheckoutController::class, 'placeOrder'])
+    ->name('checkout.placeOrder');
+// website
 Route::get('/', [WebsiteController::class,'index'])->name('home');
 Route::get('/menu', [WebsiteController::class,'menu'])->name('menu');
+
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
 
+    Route::resource('categories', CategoryController::class);
+    Route::resource('menu-items', MenuItemController::class);
+
+    Route::get('/orders', [OrderController::class, 'index'])
+        ->name('orders.index');
+
+    Route::get('/orders/{order}', [OrderController::class, 'show'])
+        ->name('orders.show');
+    
+       Route::patch('/orders/{order}/update-status',
+    [OrderController::class, 'updateStatus'])
+    ->name('orders.updateStatus');
+
+Route::patch('/orders/{order}/update-payment',
+    [OrderController::class, 'updatePayment'])
+    ->name('orders.updatePayment');
+    Route::delete('/orders/bulk-delete',
+    [OrderController::class, 'bulkDelete'])
+    ->name('orders.bulkDelete');
   
 
-    // Categories CRUD
-    Route::resource('categories', CategoryController::class);
+Route::get('/orders-trash',
+    [OrderController::class, 'trash'])
+    ->name('orders.trash');
 
-    // Menu Items CRUD
-    Route::resource('menu-items', MenuItemController::class);
+Route::patch('/orders/{id}/restore',
+    [OrderController::class, 'restore'])
+    ->name('orders.restore');
 
+Route::delete('/orders/{id}/force-delete',
+    [OrderController::class, 'forceDelete'])
+    ->name('orders.forceDelete');
 });
-Route::prefix('admin')->name('admin.')->group(function(){
-    Route::resource('categories', CategoryController::class);
-    Route::resource('menu-items', MenuItemController::class);
-});
+
+
+
 Route::resource('admin/offers', \App\Http\Controllers\Admin\OfferController::class)
     ->names('admin.offers');
     Route::get('/get-products', [WebsiteController::class, 'getProducts']);
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard',
+    [DashboardController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -284,7 +284,9 @@ body{
     transform:rotate(97.49deg);
     overflow-x: hidden !important;
 }
-
+.fire {
+    pointer-events: none;
+}
 
 /* responsivness */
 /* ============================= */

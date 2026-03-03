@@ -35,7 +35,10 @@
                     <thead class="bg-gray-800 text-gray-300 uppercase text-xs tracking-wider">
                         <tr>
                             <th class="px-6 py-4 text-left">Title</th>
-                            <th class="px-6 py-4 text-left">Description</th>
+                            <th class="px-6 py-4 text-left">Promo Code</th>
+                            <th class="px-6 py-4 text-left">Discount</th>
+                            <th class="px-6 py-4 text-left">Min Order</th>
+                            <th class="px-6 py-4 text-left">Expiry</th>
                             <th class="px-6 py-4 text-left">Status</th>
                             <th class="px-6 py-4 text-left">Highlight</th>
                             <th class="px-6 py-4 text-left">Sort</th>
@@ -50,10 +53,33 @@
 
                                 <td class="px-6 py-4 font-medium">
                                     {{ $offer->title }}
+                                    <div class="text-xs text-gray-500 mt-1 line-clamp-1">
+                                        {{ $offer->description }}
+                                    </div>
                                 </td>
 
-                                <td class="px-6 py-4 text-gray-400">
-                                    {{ $offer->description }}
+                                <td class="px-6 py-4 text-gray-300">
+                                    {{ $offer->promo_code ? $offer->promo_code : '—' }}
+                                </td>
+
+                                <td class="px-6 py-4 text-gray-300">
+                                    @if($offer->discount_type && $offer->discount_value !== null)
+                                        @if($offer->discount_type === 'percentage')
+                                            {{ rtrim(rtrim(number_format($offer->discount_value, 2), '0'), '.') }}%
+                                        @else
+                                            ${{ number_format($offer->discount_value, 2) }}
+                                        @endif
+                                    @else
+                                        —
+                                    @endif
+                                </td>
+
+                                <td class="px-6 py-4 text-gray-300">
+                                    {{ $offer->min_order_amount !== null ? '$'.number_format($offer->min_order_amount, 2) : '—' }}
+                                </td>
+
+                                <td class="px-6 py-4 text-gray-300">
+                                    {{ $offer->expires_at ? \Carbon\Carbon::parse($offer->expires_at)->format('M d, Y') : '—' }}
                                 </td>
 
                                 <td class="px-6 py-4">
@@ -81,7 +107,7 @@
                                 </td>
 
                                 <td class="px-6 py-4 text-gray-400">
-                                    {{ $offer->sort_order }}
+                                    {{ $offer->sort_order ?? 0 }}
                                 </td>
 
                                 <td class="px-6 py-4 text-right space-x-3">
@@ -109,7 +135,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center py-12 text-gray-500">
+                                <td colspan="9" class="text-center py-12 text-gray-500">
                                     No offers found.
                                 </td>
                             </tr>

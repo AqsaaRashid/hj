@@ -51,7 +51,14 @@
     Offers
 </a>        
                
-
+<!-- Orders -->
+<a href="{{ route('admin.orders.index') }}"
+   class="flex items-center px-4 py-3 rounded-md
+   {{ request()->routeIs('admin.orders.*')
+        ? 'bg-yellow-500 text-black font-semibold'
+        : 'text-white hover:bg-white hover:text-black transition' }}">
+    Orders
+</a>
 
             </nav>
 
