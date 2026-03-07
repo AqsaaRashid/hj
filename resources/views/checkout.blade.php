@@ -8,8 +8,9 @@
 
         <!-- HEADER -->
         <div class="text-center mb-4">
+                        <p class="checkout-sub">Complete your order safely & quickly</p>
+
             <h2 class="fw-bold checkout-heading"><span class="hh">Secure </span>Checkout</h2>
-            <p class="checkout-sub">Complete your order safely & quickly</p>
         </div>
 
         <div class="row g-4">
@@ -44,9 +45,30 @@
 
                     @foreach($cart as $item)
                         <div class="order-item">
-                            <span>{{ $item['name'] }} × {{ $item['quantity'] }}</span>
-                            <span>${{ number_format($item['price'] * $item['quantity'], 2) }}</span>
-                        </div>
+<div>
+    <div>{{ $item['name'] }} × {{ $item['quantity'] }}</div>
+
+    @if(isset($item['addons']))
+        @foreach($item['addons'] as $addon)
+            <small style="color:#777">
+                + {{ $addon['name'] }} (${{ number_format($addon['price'],2) }})
+            </small><br>
+        @endforeach
+    @endif
+</div>
+                        @php
+$addonTotal = 0;
+
+if(isset($item['addons'])){
+    foreach($item['addons'] as $addon){
+        $addonTotal += $addon['price'];
+    }
+}
+
+$itemTotal = ($item['price'] + $addonTotal) * $item['quantity'];
+@endphp
+
+<span>${{ number_format($itemTotal, 2) }}</span>                        </div>
                     @endforeach
 
                     <div class="summary-divider"></div>
@@ -126,8 +148,9 @@
 }
 
 .checkout-sub{
-    color:#666;
+    color: #FF7D01 !important;
     margin-bottom:0;
+    font-size:16px;
     animation:fadeDown 0.8s ease forwards;
 }
 
@@ -258,7 +281,6 @@
     padding:10px 28px;
     border-radius:4px;
     letter-spacing:0.5px;
-    box-shadow:0 6px 18px rgba(255,125,1,0.25);
     transition:all 0.2s ease;
     align-items:start;
 }

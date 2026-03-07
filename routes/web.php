@@ -8,7 +8,13 @@ use App\Http\Controllers\Admin\MenuItemController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\AddonGroupController;
+use App\Http\Controllers\Admin\AddonController;
+use App\Http\Controllers\Admin\AddonFlavorController;
+
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StripeController;
+use App\Http\Controllers\StripeWebhookController;
 
 Route::get('/', function () {
     return view('index');
@@ -33,6 +39,21 @@ Route::get('faqs', function () {
 
 // routes
 
+// payment
+// STRIPE PAYMENT
+Route::post('/place-order', [CheckoutController::class, 'placeOrder'])
+    ->name('place.order');
+
+Route::post('/stripe/checkout', [StripeController::class, 'checkout'])
+    ->name('stripe.checkout');
+
+Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
+
+Route::get('/payment-success', [StripeController::class, 'success'])
+    ->name('payment.success');
+
+Route::get('/payment-cancel', [StripeController::class, 'cancel'])
+    ->name('payment.cancel');
 
 // cart
 
@@ -40,14 +61,15 @@ Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart/get', [CartController::class, 'getCart'])->name('cart.get');
 Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
 Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+Route::post('/cart/remove-addon',[CartController::class,'removeAddon'])
+->name('cart.remove-addon');
 // checkout
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('/apply-promo', [CheckoutController::class, 'applyPromo'])->name('promo.apply');
 Route::post('/checkout/next', [CheckoutController::class, 'storeCustomer'])->name('checkout.next');
 Route::get('/payment', [CheckoutController::class, 'payment'])->name('payment');
 Route::post('/checkout/next', [CheckoutController::class, 'next'])->name('checkout.next');
-Route::post('/place-order', [CheckoutController::class, 'placeOrder'])
-    ->name('checkout.placeOrder');
+
 // website
 Route::get('/', [WebsiteController::class,'index'])->name('home');
 Route::get('/menu', [WebsiteController::class,'menu'])->name('menu');
@@ -86,6 +108,10 @@ Route::patch('/orders/{id}/restore',
 Route::delete('/orders/{id}/force-delete',
     [OrderController::class, 'forceDelete'])
     ->name('orders.forceDelete');
+
+    Route::resource('addon-groups', AddonGroupController::class);
+Route::resource('addons', AddonController::class);
+Route::resource('addon-flavors', AddonFlavorController::class);
 });
 
 

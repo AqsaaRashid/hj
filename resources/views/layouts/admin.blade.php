@@ -59,6 +59,32 @@
         : 'text-white hover:bg-white hover:text-black transition' }}">
     Orders
 </a>
+<!-- Addon Groups -->
+<a href="{{ route('admin.addon-groups.index') }}"
+   class="flex items-center px-4 py-3 rounded-md
+          {{ request()->routeIs('admin.addon-groups.*')
+            ? 'bg-yellow-500 text-black font-semibold'
+            : 'text-white hover:bg-white hover:text-black transition' }}">
+    Addon Groups
+</a>
+
+<!-- Addons -->
+<a href="{{ route('admin.addons.index') }}"
+   class="flex items-center px-4 py-3 rounded-md
+          {{ request()->routeIs('admin.addons.*')
+            ? 'bg-yellow-500 text-black font-semibold'
+            : 'text-white hover:bg-white hover:text-black transition' }}">
+    Addons
+</a>
+
+<!-- Flavors -->
+<a href="{{ route('admin.addon-flavors.index') }}"
+   class="flex items-center px-4 py-3 rounded-md
+          {{ request()->routeIs('admin.addon-flavors.*')
+            ? 'bg-yellow-500 text-black font-semibold'
+            : 'text-white hover:bg-white hover:text-black transition' }}">
+    Flavors
+</a>
 
             </nav>
 

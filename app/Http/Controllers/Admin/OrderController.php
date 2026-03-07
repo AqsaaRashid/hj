@@ -44,16 +44,16 @@ class OrderController extends Controller
     }
 
 
-    public function bulkDelete(Request $request)
-    {
-        if (!$request->orders) {
-            return back()->with('success', 'No orders selected.');
-        }
-
-        Order::whereIn('id', $request->orders)->delete();
-
-        return back()->with('success', 'Orders moved to bin.');
+   public function bulkDelete(Request $request)
+{
+    if (!$request->orders) {
+        return back()->with('success', 'No orders selected.');
     }
+
+    Order::whereIn('id', $request->orders)->forceDelete();
+
+    return back()->with('success', 'Orders deleted permanently.');
+}
 
 
     public function restore($id)

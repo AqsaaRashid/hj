@@ -14,10 +14,10 @@
         </p>
     </div>
 
-    <a href="{{ route('admin.orders.trash') }}"
+    <!-- <a href="{{ route('admin.orders.trash') }}"
        class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg text-sm">
         Bin
-    </a>
+    </a> -->
 </div>
 
 @if(session('success'))
@@ -35,10 +35,7 @@
         All
     </a>
 
-    <a href="{{ route('admin.orders.index', ['status'=>'pending']) }}"
-       class="px-4 py-2 rounded-lg bg-yellow-500/20 text-yellow-400 text-sm border border-yellow-500/30">
-        Pending
-    </a>
+ 
 
     <a href="{{ route('admin.orders.index', ['status'=>'approved']) }}"
        class="px-4 py-2 rounded-lg bg-blue-500/20 text-blue-400 text-sm border border-blue-500/30">
@@ -55,15 +52,7 @@
         Delivered
     </a>
 
-    <a href="{{ route('admin.orders.index', ['method'=>'cod']) }}"
-       class="px-4 py-2 rounded-lg bg-orange-500/20 text-orange-400 text-sm border border-orange-500/30">
-        COD
-    </a>
-
-    <a href="{{ route('admin.orders.index', ['payment'=>'pending']) }}"
-       class="px-4 py-2 rounded-lg bg-red-500/20 text-red-400 text-sm border border-red-500/30">
-        Unpaid
-    </a>
+   
 
 </div>
 
@@ -155,9 +144,7 @@ ${{ number_format($order->total,2) }}
     onchange="submitStatus(this, {{ $order->id }})"
     class="bg-gray-800 border border-gray-700 rounded-lg px-3 py-1 text-white text-sm">
 
-<option value="pending" {{ $order->order_status=='pending'?'selected':'' }}>
-Pending
-</option>
+
 
 <option value="approved" {{ $order->order_status=='approved'?'selected':'' }}>
 Approved
@@ -171,9 +158,7 @@ Preparing
 Delivered
 </option>
 
-<option value="cancelled" {{ $order->order_status=='cancelled'?'selected':'' }}>
-Cancelled
-</option>
+
 
 </select>
 

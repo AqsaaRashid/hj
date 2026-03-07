@@ -20,19 +20,15 @@
 
             <!-- STATUS BADGE -->
             <div>
-                @if($order->status == 'pending')
-                    <span class="px-4 py-2 text-xs rounded-full bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">
-                        Pending
-                    </span>
-                @elseif($order->status == 'paid')
-                    <span class="px-4 py-2 text-xs rounded-full bg-green-500/20 text-green-400 border border-green-500/30">
-                        Paid
-                    </span>
-                @elseif($order->status == 'cancelled')
-                    <span class="px-4 py-2 text-xs rounded-full bg-red-500/20 text-red-400 border border-red-500/30">
-                        Cancelled
-                    </span>
-                @endif
+               @if($order->payment_status == 'pending')
+    <span class="px-4 py-2 text-xs rounded-full bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">
+        Payment Pending
+    </span>
+@elseif($order->payment_status == 'paid')
+    <span class="px-4 py-2 text-xs rounded-full bg-green-500/20 text-green-400 border border-green-500/30">
+        Paid
+    </span>
+@endif
             </div>
 
         </div>
@@ -80,22 +76,35 @@
                 @foreach($order->items as $item)
                     <div class="flex justify-between items-center bg-gray-800/50 rounded-xl px-5 py-4 hover:bg-gray-800 transition">
 
-                        <div>
-                            <p class="font-medium text-white">
-                                {{ $item->product_name }}
-                            </p>
-                            <p class="text-xs text-gray-400">
-                                Quantity: {{ $item->quantity }}
-                            </p>
-                        </div>
+                      <div>
+    <p class="font-medium text-white">
+        {{ $item->product_name }}
+    </p>
+
+    <p class="text-xs text-gray-400">
+        Quantity: {{ $item->quantity }}
+    </p>
+
+    @foreach($item->addons as $addon)
+
+        <p class="text-xs text-yellow-400">
+            + {{ $addon->addon_name }} (${{ number_format($addon->price,2) }})
+        </p>
+
+    @endforeach
+</div>
 
                         <div class="text-right">
                             <p class="text-sm text-gray-400">
                                 ${{ number_format($item->price,2) }} each
                             </p>
                             <p class="font-semibold text-white">
-                                ${{ number_format($item->price * $item->quantity,2) }}
-                            </p>
+@php
+$addonTotal = $item->addons->sum('price');
+$totalItem = ($item->price + $addonTotal) * $item->quantity;
+@endphp
+
+${{ number_format($totalItem,2) }}                            </p>
                         </div>
 
                     </div>

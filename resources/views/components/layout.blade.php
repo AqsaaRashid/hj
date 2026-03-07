@@ -228,6 +228,7 @@
 
 
 <script>
+    
 const cartDrawer = document.getElementById('cartDrawer');
 
 const cartTrigger = document.querySelector('.cart-trigger');
@@ -289,24 +290,57 @@ function loadCart() {
         itemsWrap.innerHTML = keys.map(id => {
             const item = cart[id];
             const imgUrl = item.image ? `{{ asset('storage') }}/${item.image}` : '';
-            return `
-                <div style="display:flex; gap:12px; padding:12px 0; border-bottom:1px solid #eee;">
-                    <img src="${imgUrl}" style="width:60px; height:60px; object-fit:cover; border-radius:8px;">
-                    <div style="flex:1;">
-                        <div style="display:flex; justify-content:space-between; gap:10px;">
-                            <strong style="font-size:14px;">${item.name}</strong>
-                            <button onclick="removeFromCart('${id}')" style="border:none; background:transparent; color:#BB0000; font-weight:700; cursor:pointer;">×</button>
-                        </div>
-                        <div style="font-size:13px; margin-top:4px;">$${Number(item.price).toFixed(2)}</div>
+         return `
+<div style="display:flex; gap:12px; padding:12px 0; border-bottom:1px solid #eee;">
+    
+    <img src="${imgUrl}" style="width:60px; height:60px; object-fit:cover; border-radius:8px;">
+    
+    <div style="flex:1;">
+        
+        <div style="display:flex; justify-content:space-between; gap:10px;">
+            <strong style="font-size:14px;">${item.name}</strong>
 
-                        <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
-                            <button onclick="changeQty('${id}', ${item.quantity - 1})" style="width:28px;height:28px;border:none;background:#FFCE12;border-radius:6px;cursor:pointer;">-</button>
-                            <span style="min-width:20px; text-align:center;">${item.quantity}</span>
-                            <button onclick="changeQty('${id}', ${item.quantity + 1})" style="width:28px;height:28px;border:none;background:#FFCE12;border-radius:6px;cursor:pointer;">+</button>
-                        </div>
-                    </div>
-                </div>
-            `;
+            <button onclick="removeFromCart('${id}')" 
+            style="border:none;background:transparent;color:#BB0000;font-weight:700;cursor:pointer;">
+            ×
+            </button>
+        </div>
+
+        <div style="font-size:13px; margin-top:4px;">
+$${Number((item.price + (item.addon_total || 0)) * item.quantity).toFixed(2)}      </div>
+
+        ${
+            item.addons && item.addons.length
+            ? 
+           item.addons.map((a,i) => `
+<div style="font-size:12px;color:#777;display:flex;justify-content:space-between;">
+    <span>+ ${a.name} ($${Number(a.price).toFixed(2)})</span>
+
+    <button onclick="removeAddon('${id}',${i})"
+    style="border:none;background:transparent;color:#BB0000;font-weight:700;cursor:pointer;">
+    ×
+    </button>
+</div>
+`)
+            .join('')
+            : ''
+        }
+
+        <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
+            
+            <button onclick="changeQty('${id}', ${item.quantity - 1})"
+            style="width:28px;height:28px;border:none;background:#FFCE12;border-radius:6px;cursor:pointer;">-</button>
+
+            <span style="min-width:20px;text-align:center;">${item.quantity}</span>
+
+            <button onclick="changeQty('${id}', ${item.quantity + 1})"
+            style="width:28px;height:28px;border:none;background:#FFCE12;border-radius:6px;cursor:pointer;">+</button>
+
+        </div>
+
+    </div>
+</div>
+`;
         }).join('');
     })
     .catch(err => console.error("loadCart error:", err));
@@ -342,6 +376,24 @@ function changeQty(productId, qty) {
     .then(res => res.json())
     .then(() => loadCart())
     .catch(err => console.error("update error:", err));
+}
+function removeAddon(productKey, addonIndex){
+
+fetch("{{ route('cart.remove-addon') }}",{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"Accept":"application/json",
+"X-CSRF-TOKEN":document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+},
+body:JSON.stringify({
+product_key:productKey,
+addon_index:addonIndex
+})
+})
+.then(res=>res.json())
+.then(()=>loadCart())
+
 }
 </script>
 </body>

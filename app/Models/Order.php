@@ -3,11 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
 {
-    use SoftDeletes;
 
     protected $fillable = [
         'order_number',
@@ -20,6 +18,7 @@ class Order extends Model
         'subtotal',
         'discount',
         'total',
+        'stripe_session_id',
         'payment_method',
         'payment_status',
         'order_status'

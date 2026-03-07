@@ -41,437 +41,732 @@
    
 
   </div>
-
-
-  <!-- model -->
-   <!-- PRODUCT MODAL -->
+<!-- PRODUCT MODAL -->
 <div id="productModal" class="product-modal">
-    <div class="modal-overlay"></div>
 
-    <div class="modal-box">
+<div class="modal-overlay"></div>
 
-        <span class="modal-close">&times;</span>
+<div class="modal-box">
 
-        <div class="modal-left">
-            <img id="modalImage" src="">
-        </div>
+<span class="modal-close">x</span>
 
-        <div class="modal-right">
-            <h3 id="modalName"></h3>
-            <div class="modal-price" id="modalPrice"></div>
-            <p id="modalDescription"></p>
+<div class="modal-inner">
 
-            <div class="quantity-wrapper">
-                <button id="decreaseQty">-</button>
-                <span id="productQty">1</span>
-                <button id="increaseQty">+</button>
-            </div>
+<!-- LEFT SIDE -->
+ 
+<div class="modal-options">
 
-            <div class="modal-buttons">
-                <button class="add-cart-btn">Add to Cart</button>
-            </div>
-        </div>
+<div class="option-box">
 
-    </div>
+<div class="option-header toggle-section">
+<span>Complete with a Drink</span>
+<span class="optional">(Optional) ▾</span>
 </div>
+
+<div class="option-body">
+
+
+@foreach($addonGroups->firstWhere('name','Complete with a Drink')->addons ?? [] as $addon)
+<div class="drink-item">
+
+<div class="drink-left">
+
+<img src="{{ $addon->image ? asset('storage/'.$addon->image) : asset('images/juice.png') }}">
+
+<div>
+
+<div class="drink-name">{{ $addon->name }}</div>
+
+@if($addon->price)
+<div class="drink-size">(+${{ number_format($addon->price,2) }})</div>
+@endif
+
+</div>
+
+</div>
+
+@if($addon->has_flavors)
+<button type="button" class="drink-btn flavor-btn"
+data-addon="{{ $addon->id }}"
+data-price="{{ $addon->price }}">
+
+Select Flavor ▾
+
+</button>
+
+<div class="flavor-dropdown" style="display:none">
+
+@foreach($addon->flavors as $flavor)
+
+<div class="flavor-item"
+data-price="{{ $addon->price }}">
+
+{{ $flavor->flavor }}
+
+</div>
+
+@endforeach
+
+</div>
+
+@else
+<button type="button" class="drink-btn add-addon"
+data-price="{{ $addon->price }}">
+Add
+</button>
+
+@endif
+
+</div>
+
+@endforeach
+</div>
+</div>
+
+<div class="option-collapse toggle-section">
+Perfect Pairings
+<span class="optional">(Optional) ▾</span>
+</div>
+
+<div class="option-body">
+@foreach($addonGroups->firstWhere('name','Perfect Pairings')->addons ?? [] as $addon)
+
+<div class="drink-item">
+
+<div class="drink-left">
+
+<img src="{{ $addon->image ? asset('storage/'.$addon->image) : asset('images/juice.png') }}">
+
+<div>
+
+<div class="drink-name">{{ $addon->name }}</div>
+
+@if($addon->price)
+<div class="drink-size">(+${{ number_format($addon->price,2) }})</div>
+@endif
+
+</div>
+
+</div>
+
+<button class="drink-btn add-addon"
+data-price="{{ $addon->price }}">
+Add
+</button>
+
+</div>
+
+@endforeach
+</div>
+
+
+<div class="option-collapse toggle-section">Add some Dip
+<span class="optional">(Optional) ▾</span>
+</div>
+<div class="option-body">
+@foreach($addonGroups->firstWhere('name','Add some Dip')->addons ?? [] as $addon)
+
+<div class="drink-item">
+
+<div class="drink-left">
+
+<img src="{{ $addon->image ? asset('storage/'.$addon->image) : asset('images/juice.png') }}">
+
+<div>
+
+<div class="drink-name">{{ $addon->name }}</div>
+
+@if($addon->price)
+<div class="drink-size">(+${{ number_format($addon->price,2) }})</div>
+@endif
+
+</div>
+
+</div>
+
+<button class="drink-btn add-addon"
+data-price="{{ $addon->price }}">
+Add
+</button>
+
+</div>
+
+@endforeach
+</div>
+</div>
+
+
+<!-- RIGHT SIDE -->
+<div class="modal-product">
+
+<img id="modalImage" class="modal-product-img">
+
+<h2 id="modalName"></h2>
+
+<p id="modalDescription"></p>
+
+<div class="quantity-wrapper">
+<button id="decreaseQty">-</button>
+<span id="productQty">1</span>
+<button id="increaseQty">+</button>
+</div>
+
+<div class="bucket-wrapper">
+
+<div class="bucket-price" id="bucketPrice">$0.00</div>
+
+<button class="add-cart-btn">
+Add to Bucket
+<span class="bucket-arrow">›</span>
+</button>
+
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
 <style>
-  /* =========================
-   PREMIUM PRODUCT MODAL
-========================= */
-
-.product-modal {
-    position: fixed;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
+  .product-modal{
+position:fixed;
+inset:0;
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
 }
 
-.product-modal.active {
-    display: flex;
+.product-modal.active{
+display:flex;
 }
 
-/* Overlay */
-.modal-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.65);
-    backdrop-filter: blur(6px);
+.modal-overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.65);
+backdrop-filter:blur(5px);
 }
 
-/* Modal Box */
-.modal-box {
-    position: relative;
-    background: #ffffff;
-    width: 900px;
-    max-width: 95%;
-    border-radius: 18px;
-    display: flex;
-    overflow: hidden;
-    z-index: 2;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.25);
-    animation: premiumFade 0.35s ease;
+.modal-box{
+background: #FFF8F5;
+width:900px;
+max-width:96%;
+border-radius:12px;
+padding:28px;
+position:relative;
+box-shadow:0 30px 80px rgba(0,0,0,0.3);
 }
 
-@keyframes premiumFade {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Left Image Section */
-.modal-left {
-    width: 50%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    overflow: hidden;
-}
-
-/* Red gradient layer */
-.modal-left::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #BB0000, #8c0000);
-    z-index: 1;
-}
-
-/* Background image layer */
-.modal-left::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: url('/images/stars.png') center/cover no-repeat;
-    z-index: 2;
-    height:720px;
-}
-
-/* Keep product image above layers */
-.modal-left img {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    max-width: 320px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-.modal-left img:hover {
-    transform: scale(1.05);
-}
-
-/* Right Content */
-.modal-right {
-    width: 50%;
-    padding: 45px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.modal-right h3 {
-    font-family: 'Holtwood One SC', serif;
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-.modal-price {
-    font-size: 28px;
-     font-family: 'Holtwood One SC', serif;
-
-    color: #BB0000;
-    font-weight: 100;
-    margin: 12px 0 18px;
-}
-
-.modal-right p {
-    color: #555;
-    line-height: 1.6;
-    font-size: 15px;
-}
-
-/* Quantity */
-.quantity-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin: 25px 0;
-}
-
-.quantity-wrapper button {
-    width: 40px;
-    height: 40px;
-    border: none;
-    background: #FFCE12;
-    font-size: 18px;
-    font-weight: 700;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    color:#fff;
-}
-
-.quantity-wrapper button:hover {
-    background: #f5b800;
-    transform: scale(1.05);
-}
-
-#productQty {
-    font-size: 18px;
-    font-weight: 600;
-}
-
-/* Add to Cart Button */
-.add-cart-btn {
-    background: linear-gradient(135deg, #FFCE12, #f5b800);
-    border: none;
-    padding: 14px 28px;
-    font-weight: 700;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.25s ease;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
-    color: #fff;
-}
-
-.add-cart-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
-}
-
-/* Close Button */
-.modal-close {
-    position: absolute;
-    top: 18px;
-    right: 18px;
-    width: 38px;
-    height: 38px;
-    background: #BB0000;
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-}
-
-.modal-close:hover {
-    background: #900000;
-    transform: scale(1.08);
-}
-/* =========================
-   RESPONSIVE MODAL
-========================= */
-
-@media (max-width: 992px) {
-
-    .modal-box {
-        width: 95%;
-        flex-direction: column;
-        border-radius: 20px;
-    }
-
-    .modal-left,
-    .modal-right {
-        width: 100%;
-    }
-
-    .modal-left {
-        padding: 30px 20px;
-        min-height: 250px;
-    }
-
-    .modal-left img {
-        max-width: 220px;
-    }
-
-    .modal-right {
-        padding: 30px 25px;
-    }
-
-    .modal-right h3 {
-        font-size: 22px;
-    }
-
-    .modal-price {
-        font-size: 22px;
-    }
-
-    .add-cart-btn {
-        width: 100%;
-    }
-
-    .quantity-wrapper {
-        justify-content: center;
-    }
+.modal-inner{
+display:flex;
+gap:35px;
 
 }
 
+/* LEFT PANEL */
 
-/* Extra Small Devices (Phones) */
-@media (max-width: 576px) {
+.modal-options{
+width:50%;
+margin-left:40px;
+margin-top:30px;
+}
 
-    .modal-box {
-        width: 95%;
-        max-height: 90vh;
-        overflow-y: auto;
-    }
+.option-box{
+background: #BB00001A;
+border-radius:8px;
+overflow:visible;
+}
 
-    .modal-left {
-        padding: 25px 15px;
-        min-height: 200px;
-    }
+.option-header{
+background:#c40000;
+color:#fff;
+padding:14px 16px;
+font-weight:700;
+display:flex;
+justify-content:space-between;
+}
 
-    .modal-left img {
-        max-width: 180px;
-    }
+.optional{
+font-weight:400;
+font-size:13px;
+}
 
-    .modal-right {
-        padding: 25px 20px;
-    }
+.drink-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:6px 16px;
+background:#fbeeee;
+}
 
-    .modal-right h3 {
-        font-size: 20px;
-        text-align: center;
-    }
+.drink-left{
+display:flex;
+gap:10px;
+align-items:center;
+}
 
-    .modal-price {
-        font-size: 20px;
-        text-align: center;
-    }
+.drink-left img{
+width:24px;
+}
 
-    .modal-right p {
-        font-size: 14px;
-        text-align: center;
-    }
+.drink-name{
+font-weight:600;
+font-size:14px;
+}
 
-    .quantity-wrapper {
-        justify-content: center;
-        gap: 12px;
-    }
+.drink-size{
+font-size:12px;
+color:#777;
+}
 
-    .quantity-wrapper button {
-        width: 36px;
-        height: 36px;
-    }
+.drink-btn{
+background:#c40000;
+border:none;
+color:#fff;
+padding:8px 14px;
+border-radius:6px;
+font-size:13px;
+cursor:pointer;
+}
 
-    .modal-close {
-        width: 34px;
-        height: 34px;
-        font-size: 16px;
-    }
+.option-collapse{
+margin-top:7px;
+background:#c40000;
+color:#fff;
+padding:14px 16px;
+border-radius:8px;
+display:flex;
+justify-content:space-between;
+font-weight:600;
+}
+
+/* RIGHT PANEL */
+
+.modal-product{
+width:58%;
+text-align:center;
+padding:0 20px;
+}
+
+.modal-product-img{
+width:230px;
+margin:auto;
+display:block;
+}
+
+.modal-product h2{
+font-family:'Holtwood One SC';
+font-size:42px;
+margin-top:14px;
+}
+
+.modal-product p{
+color:#444;
+margin-top:8px;
+font-size:15px;
+}
+
+/* QUANTITY */
+
+.quantity-wrapper{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:14px;
+margin:22px 0;
+}
+
+.quantity-wrapper button{
+width:42px;
+height:42px;
+border:1px solid #BB0000;
+background:#fff;
+font-size:20px;
+border-radius:6px;
+cursor:pointer;
+}
+
+#productQty{
+font-weight:700;
+}
+
+/* ADD TO BUCKET */
+
+.bucket-wrapper{
+display:flex;
+justify-content:center;
+margin-top:10px;
+}
+
+.bucket-price{
+background: #BB0000;
+color:#fff;
+padding:14px 22px;
+font-weight:700;
+border-radius:8px 0 0 8px;
+}
+
+.add-cart-btn{
+background:#BB0000;
+border:none;
+color:#fff;
+padding:14px 26px;
+font-weight:700;
+display:flex;
+align-items:center;
+gap:10px;
+cursor:pointer;
+border-radius:0 8px 8px 0;
+}
+
+.bucket-arrow{
+width:28px;
+height:28px;
+background:#fff;
+color:#c40000;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:700;
+}
+
+/* CLOSE BUTTON */
+
+.modal-close{
+position:absolute;
+top:14px;
+right:14px;
+background:#c40000;
+color:#fff;
+width:32px;
+height:32px;
+border-radius:4px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+}
+.flavor-dropdown{
+background:#fff;
+border:1px solid #ddd;
+margin-top:4px;
+}
+
+.flavor-item{
+padding:6px 10px;
+cursor:pointer;
+font-size:13px;
+}
+
+.flavor-item:hover{
+background:#f4f4f4;
+}
+
+
+.drink-item{
+position:relative;
+}
+
+.flavor-dropdown{
+position:absolute;
+right:16px;
+top:100%;
+width:180px;
+background:#fff;
+border:1px solid #ddd;
+border-radius:6px;
+margin-top:6px;
+z-index:10;
+}
+.drink-item{
+position:relative;
+z-index:1;
+}
+
+.drink-item.open{
+z-index:20;
+}
+
+.flavor-dropdown{
+position:absolute;
+right:16px;
+top:calc(100% + -15px);
+width:120px;
+background:#fff;
+border:1px solid #ddd;
+border-radius:6px;
+z-index:30;
+box-shadow:0 8px 18px rgba(0,0,0,0.12);
+}
+.option-body{
+display:none;
+}
+
+.option-box.active .option-body{
+display:block;
+}
+
+.section.active + .option-body{
+display:block;
 }
 </style>
 </section>
 <script>
+    let selectedAddons = [];
 const modal = document.getElementById('productModal');
 const modalName = document.getElementById('modalName');
-const modalPrice = document.getElementById('modalPrice');
 const modalDescription = document.getElementById('modalDescription');
 const modalImage = document.getElementById('modalImage');
 const qtyDisplay = document.getElementById('productQty');
+const priceDisplay = document.getElementById('bucketPrice');
 
 let quantity = 1;
 let selectedProductId = null;
+let productPrice = 0;
+
+/* OPEN MODAL WHEN PRODUCT CLICKED */
 
 document.querySelectorAll('.product-card').forEach(card => {
 
-    card.addEventListener('click', function() {
+card.addEventListener('click', function(){
 
-        selectedProductId = this.dataset.id;
+/* RESET ADDONS WHEN MODAL OPENS */
+selectedAddons = [];
+addonTotal = 0;
 
-        modalName.innerText = this.dataset.name;
-        modalPrice.innerText = "$" + this.dataset.price;
-        modalDescription.innerText = this.dataset.description;
-        modalImage.src = this.dataset.image;
+selectedProductId = this.dataset.id;
 
-        quantity = 1;
-        qtyDisplay.innerText = quantity;
+modalName.innerText = this.dataset.name;
+modalDescription.innerText = this.dataset.description;
+modalImage.src = this.dataset.image;
 
-        modal.classList.add('active');
-    });
+productPrice = parseFloat(this.dataset.price);
 
-});
+quantity = 1;
+qtyDisplay.innerText = quantity;
 
-// Close modal
-document.querySelector('.modal-close').addEventListener('click', () => {
-    modal.classList.remove('active');
-});
+updatePrice();
 
-document.querySelector('.modal-overlay').addEventListener('click', () => {
-    modal.classList.remove('active');
-});
-
-// Quantity controls
-document.getElementById('increaseQty').addEventListener('click', () => {
-    quantity++;
-    qtyDisplay.innerText = quantity;
-});
-
-document.getElementById('decreaseQty').addEventListener('click', () => {
-    if(quantity > 1){
-        quantity--;
-        qtyDisplay.innerText = quantity;
-    }
-});
-
-
-</script>
-<script>
-document.querySelector('.add-cart-btn').addEventListener('click', async function (e) {
-    e.stopPropagation();
-
-    if (!selectedProductId) return;
-
-    try {
-        const res = await fetch("{{ route('cart.add') }}", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "X-CSRF-TOKEN": "{{ csrf_token() }}"
-            },
-            body: JSON.stringify({
-                product_id: selectedProductId,
-                quantity: quantity
-            })
-        });
-
-        const data = await res.json();
-
-        if (data.success) {
-
-    modal.classList.remove('active');
-
-    // open cart drawer
-    const cartDrawer = document.getElementById('cartDrawer');
-    if (cartDrawer) cartDrawer.classList.add('active');
-
-    // refresh cart items
-    if (typeof loadCart === "function") loadCart();
-
-    // update cart count
-    const badge = document.getElementById('cartCount');
-    if (badge && data.cartCount !== undefined) {
-        badge.innerText = data.cartCount;
-    }
+modal.classList.add('active');
+// Open first section when modal opens
+const firstBody = document.querySelector('.modal-options .option-body');
+if (firstBody) {
+    document.querySelectorAll('.option-body').forEach(el => el.style.display = 'none');
+    firstBody.style.display = 'block';
 }
 
-    } catch (error) {
-        console.error("Fetch error:", error);
+});
+
+});
+
+
+/* CLOSE MODAL */
+
+document.querySelector('.modal-close').onclick = ()=>{
+modal.classList.remove('active');
+}
+
+document.querySelector('.modal-overlay').onclick = ()=>{
+modal.classList.remove('active');
+}
+
+
+/* UPDATE PRICE FUNCTION */
+
+function updatePrice(){
+const total = productPrice * quantity;
+priceDisplay.innerText = "$" + total.toFixed(2);
+}
+
+
+/* QUANTITY CONTROLS */
+
+document.getElementById('increaseQty').onclick = ()=>{
+quantity++;
+qtyDisplay.innerText = quantity;
+updatePrice();
+}
+
+document.getElementById('decreaseQty').onclick = ()=>{
+if(quantity > 1){
+quantity--;
+qtyDisplay.innerText = quantity;
+updatePrice();
+}
+}
+
+
+/* ADD TO CART */
+
+document.querySelector('.add-cart-btn').addEventListener('click', async function (e) {
+
+e.stopPropagation();
+
+if (!selectedProductId) return;
+
+try {
+
+const res = await fetch("{{ route('cart.add') }}", {
+method: "POST",
+headers: {
+"Content-Type": "application/json",
+"Accept": "application/json",
+"X-CSRF-TOKEN": "{{ csrf_token() }}"
+},
+body: JSON.stringify({
+product_id: selectedProductId,
+quantity: quantity,
+addons: selectedAddons
+})
+});
+
+const data = await res.json();
+
+if (data.success) {
+
+modal.classList.remove('active');
+
+const cartDrawer = document.getElementById('cartDrawer');
+if (cartDrawer) cartDrawer.classList.add('active');
+
+if (typeof loadCart === "function") loadCart();
+
+const badge = document.getElementById('cartCount');
+if (badge && data.cartCount !== undefined) {
+badge.innerText = data.cartCount;
+}
+
+}
+
+} catch (error) {
+console.error("Fetch error:", error);
+}
+
+});
+let addonTotal = 0;
+
+/* OPEN FLAVOR DROPDOWN */
+document.addEventListener('click', function(e){
+
+const btn = e.target.closest('.flavor-btn');
+
+if(btn){
+
+e.preventDefault();
+e.stopPropagation();
+
+document.querySelectorAll('.flavor-dropdown').forEach(drop => {
+    if(drop !== btn.closest('.drink-item').querySelector('.flavor-dropdown')){
+        drop.style.display = 'none';
     }
+});
+
+document.querySelectorAll('.drink-item').forEach(item => {
+    if(item !== btn.closest('.drink-item')){
+        item.classList.remove('open');
+    }
+});
+
+const parent = btn.closest('.drink-item');
+const dropdown = parent.querySelector('.flavor-dropdown');
+
+parent.classList.toggle('open');
+
+dropdown.style.display =
+dropdown.style.display === 'block'
+? 'none'
+: 'block';
+
+}
+
+});
+
+/* SELECT FLAVOR */
+
+document.addEventListener('click',function(e){
+
+if(e.target.classList.contains('flavor-item')){
+
+e.stopPropagation();
+
+
+const price = parseFloat(e.target.dataset.price);
+
+const addonName = e.target.closest('.drink-item')
+.querySelector('.drink-name').innerText;
+
+selectedAddons.push({
+name: addonName,
+price: price
+});
+
+addonTotal += price;
+updatePrice();
+
+}
+
+});
+
+
+/* ADD ADDON */
+
+/* ADD ADDON */
+
+document.addEventListener('click',function(e){
+
+if(e.target.classList.contains('add-addon')){
+
+const price = parseFloat(e.target.dataset.price);
+
+const addonName = e.target.closest('.drink-item')
+.querySelector('.drink-name').innerText;
+
+selectedAddons.push({
+name: addonName,
+price: price
+});
+
+addonTotal += price;
+updatePrice();
+
+}
+
+});
+
+/* MODIFY ORIGINAL PRICE FUNCTION */
+
+function updatePrice(){
+
+const total = (productPrice * quantity) + addonTotal;
+
+priceDisplay.innerText = "$" + total.toFixed(2);
+
+}
+
+
+document.querySelectorAll('.toggle-section').forEach(section => {
+
+section.addEventListener('click', function(){
+
+const body = this.nextElementSibling;
+
+/* CLOSE ALL OTHER SECTIONS */
+document.querySelectorAll('.option-body').forEach(el => {
+if(el !== body){
+el.style.display = "none";
+}
+});
+
+/* TOGGLE CURRENT */
+body.style.display =
+body.style.display === "block"
+? "none"
+: "block";
+
+});
+
 });
 </script>
