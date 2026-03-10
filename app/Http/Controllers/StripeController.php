@@ -11,74 +11,86 @@ class StripeController extends Controller
 {
 
     public function checkout(Request $request)
-    {
-        Stripe::setApiKey(env('STRIPE_SECRET'));
+{
+    Stripe::setApiKey(env('STRIPE_SECRET'));
 
-        $cart = session('cart', []);
-        $customer = session('customer');
+    $cart = session('cart', []);
+    $customer = session('customer');
 
-        if (empty($cart) || !$customer) {
-            return response()->json([
-                'error' => 'Session expired. Please try again.'
-            ]);
-        }
-
-        // Get order id from frontend
-        $orderId = $request->order_id;
-
-        $order = Order::find($orderId);
-
-        if (!$order) {
-            return response()->json([
-                'error' => 'Order not found'
-            ]);
-        }
-
-        $lineItems = [];
-
-        foreach ($cart as $item) {
-
-            $lineItems[] = [
-                'price_data' => [
-                    'currency' => 'usd',
-                    'product_data' => [
-                        'name' => $item['name'],
-                    ],
-                    'unit_amount' => $item['price'] * 100,
-                ],
-                'quantity' => $item['quantity'],
-            ];
-        }
-
-        $session = Session::create([
-
-            'payment_method_types' => ['card'],
-
-            'mode' => 'payment',
-
-            'customer_email' => $customer['email'],
-
-            'line_items' => $lineItems,
-
-            'metadata' => [
-                'order_id' => $order->id
-            ],
-
-            'success_url' => route('payment.success') . '?session_id={CHECKOUT_SESSION_ID}',
-
-            'cancel_url' => route('payment.cancel'),
-
-        ]);
-
-        // Save stripe session id for reference
-        $order->update([
-            'stripe_session_id' => $session->id
-        ]);
-
+    if (empty($cart) || !$customer) {
         return response()->json([
-            'id' => $session->id
+            'error' => 'Session expired. Please try again.'
         ]);
     }
+
+    $orderId = $request->order_id;
+
+    $order = Order::find($orderId);
+
+    if (!$order) {
+        return response()->json([
+            'error' => 'Order not found'
+        ]);
+    }
+    if ($order->payment_status === 'paid') {
+    return response()->json([
+        'error' => 'Order already paid.'
+    ]);
+}
+
+   $lineItems = [];
+
+foreach ($cart as $item) {
+
+    $addonTotal = 0;
+    $addonText = '';
+
+    if(isset($item['addons'])){
+
+        foreach($item['addons'] as $addon){
+
+            $addonTotal += $addon['price'];
+
+            $addonText .= ' + '.$addon['name'];
+
+        }
+
+    }
+
+    $unitPrice = ($item['price'] + $addonTotal) * 100;
+
+    $lineItems[] = [
+        'price_data' => [
+            'currency' => 'usd',
+            'product_data' => [
+                'name' => $item['name'] . $addonText,
+            ],
+            'unit_amount' => (int)$unitPrice,
+        ],
+        'quantity' => $item['quantity'],
+    ];
+}
+
+    $session = Session::create([
+        'payment_method_types' => ['card'],
+        'mode' => 'payment',
+'customer_email' => $customer['email'] ?? null,
+        'line_items' => $lineItems,
+        'metadata' => [
+            'order_id' => $order->id
+        ],
+        'success_url' => route('payment.success') . '?session_id={CHECKOUT_SESSION_ID}',
+        'cancel_url' => route('payment.cancel'),
+    ]);
+
+    $order->update([
+        'stripe_session_id' => $session->id
+    ]);
+
+    return response()->json([
+        'id' => $session->id
+    ]);
+}
  
 public function success(Request $request)
 {

@@ -41,6 +41,7 @@
    
 
   </div>
+
 <!-- PRODUCT MODAL -->
 <div id="productModal" class="product-modal">
 
@@ -514,6 +515,7 @@ display:block;
 }
 </style>
 </section>
+
 <script>
     let selectedAddons = [];
 const modal = document.getElementById('productModal');
@@ -576,10 +578,6 @@ modal.classList.remove('active');
 
 /* UPDATE PRICE FUNCTION */
 
-function updatePrice(){
-const total = productPrice * quantity;
-priceDisplay.innerText = "$" + total.toFixed(2);
-}
 
 
 /* QUANTITY CONTROLS */
@@ -740,7 +738,7 @@ updatePrice();
 
 function updatePrice(){
 
-const total = (productPrice * quantity) + addonTotal;
+const total = (productPrice + addonTotal) * quantity;
 
 priceDisplay.innerText = "$" + total.toFixed(2);
 

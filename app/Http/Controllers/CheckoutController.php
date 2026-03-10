@@ -240,21 +240,16 @@ $subtotal = $this->calculateSubtotal($cart);    $discount = session('promo')['di
     $total = max($subtotal - $discount, 0);
 
 
-    do {
+   $lastOrder = Order::latest()->first();
 
-    $lastOrder = Order::latest()->first();
+if ($lastOrder && $lastOrder->order_number) {
+    $num = intval(substr($lastOrder->order_number, 5));
+    $nextNumber = $num + 1;
+} else {
+    $nextNumber = 1;
+}
 
-    if ($lastOrder && $lastOrder->order_number) {
-        $num = intval(substr($lastOrder->order_number, 5));
-        $nextNumber = $num + 1;
-    } else {
-        $nextNumber = 1;
-    }
-
-    $orderNumber = 'HJGH-' . str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
-
-} while (Order::where('order_number', $orderNumber)->exists());
-
+$orderNumber = 'HJGH-' . str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
 
     $paymentMethod = $request->payment_method ?? 'stripe';
 

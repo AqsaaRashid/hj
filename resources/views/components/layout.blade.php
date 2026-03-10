@@ -307,7 +307,9 @@ function loadCart() {
         </div>
 
         <div style="font-size:13px; margin-top:4px;">
-$${Number((item.price + (item.addon_total || 0)) * item.quantity).toFixed(2)}      </div>
+        $${Number((item.price + (item.addon_total || 0)) * item.quantity).toFixed(2)}
+<span style="font-size:11px;color:#777;">($${Number(item.price + (item.addon_total || 0)).toFixed(2)} each)</span>
+    </div>
 
         ${
             item.addons && item.addons.length
@@ -362,6 +364,7 @@ function removeFromCart(productId) {
 }
 
 function changeQty(productId, qty) {
+
     if (qty < 1) return;
 
     fetch("{{ route('cart.update') }}", {
@@ -371,7 +374,7 @@ function changeQty(productId, qty) {
             "Accept": "application/json",
             "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         },
-        body: JSON.stringify({ product_id: productId, quantity: qty })
+body: JSON.stringify({ product_key: productId, quantity: qty })
     })
     .then(res => res.json())
     .then(() => loadCart())

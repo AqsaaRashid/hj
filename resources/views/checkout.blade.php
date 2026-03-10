@@ -439,32 +439,85 @@ function applyPromo() {
     });
 }
 
-function goToPayment(){
 
-    fetch("{{ route('checkout.next') }}", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-CSRF-TOKEN": "{{ csrf_token() }}"
-        },
-        body: JSON.stringify({
-            name: document.getElementById('customerName').value,
-            email: document.getElementById('customerEmail').value,
-            phone: document.getElementById('customerPhone').value,
-            street: document.getElementById('street').value,
-            city: document.getElementById('city').value,
-            zip: document.getElementById('zip').value
-        })
+</script>
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+
+let stripe = Stripe("{{ env('STRIPE_KEY') }}");
+
+async function goToPayment(){
+
+try{
+
+// 1️⃣ Save customer info
+const response = await fetch("{{ route('checkout.next') }}", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-TOKEN": "{{ csrf_token() }}"
+    },
+    body: JSON.stringify({
+        name: document.getElementById('customerName').value,
+        email: document.getElementById('customerEmail').value,
+        phone: document.getElementById('customerPhone').value,
+        street: document.getElementById('street').value,
+        city: document.getElementById('city').value,
+        zip: document.getElementById('zip').value
     })
-    .then(res => res.json())
-    .then(data => {
-        if(data.success){
-            window.location.href = "{{ route('payment') }}";
-        } else {
-            alert(data.message);
-        }
-    });
+});
+
+const data = await response.json();
+
+if(!data.success){
+    alert(data.message);
+    return;
+}
+
+
+// 2️⃣ Create order
+const orderResponse = await fetch("{{ route('place.order') }}",{
+    method:"POST",
+    headers:{
+        "Content-Type":"application/json",
+        "X-CSRF-TOKEN":"{{ csrf_token() }}"
+    }
+});
+
+const order = await orderResponse.json();
+
+if(!order.success){
+    alert(order.message);
+    return;
+}
+
+
+// 3️⃣ Create Stripe session
+const stripeResponse = await fetch("{{ route('stripe.checkout') }}",{
+    method:"POST",
+    headers:{
+        "Content-Type":"application/json",
+        "X-CSRF-TOKEN":"{{ csrf_token() }}"
+    },
+    body: JSON.stringify({
+        order_id: order.order_id
+    })
+});
+
+const session = await stripeResponse.json();
+
+
+// 4️⃣ Redirect to Stripe
+stripe.redirectToCheckout({
+    sessionId: session.id
+});
+
+}catch(e){
+console.log(e);
+alert("Payment error. Check console.");
+}
+
 }
 </script>
-
 @endsection

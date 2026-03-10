@@ -8,25 +8,25 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Basic Counts
+        // Order counts
         $totalOrders = Order::count();
 
         $pendingOrders = Order::where('order_status', 'pending')->count();
 
-        $completedOrders = Order::where('order_status', 'completed')->count();
-
         $preparingOrders = Order::where('order_status', 'preparing')->count();
 
-        // Revenue (only completed orders)
+        $completedOrders = Order::where('order_status', 'completed')->count();
+
+        // Revenue
         $totalRevenue = Order::where('order_status', 'completed')
                             ->sum('total');
 
-        // Today Revenue
+        // Today's Revenue
         $todayRevenue = Order::whereDate('created_at', today())
                             ->where('order_status', 'completed')
                             ->sum('total');
 
-        // Recent Orders (latest 5)
+        // Latest Orders
         $recentOrders = Order::latest()
                             ->take(5)
                             ->get();
@@ -34,8 +34,8 @@ class DashboardController extends Controller
         return view('dashboard', compact(
             'totalOrders',
             'pendingOrders',
-            'completedOrders',
             'preparingOrders',
+            'completedOrders',
             'totalRevenue',
             'todayRevenue',
             'recentOrders'

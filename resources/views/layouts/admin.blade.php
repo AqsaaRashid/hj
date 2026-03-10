@@ -18,75 +18,96 @@
             </div>
 
             <!-- Menu -->
-            <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+        <nav class="flex-1 px-4 py-6 space-y-6 overflow-y-auto">
 
-                <!-- Dashboard -->
-                <a href="{{ route('dashboard') }}"
-                   class="flex items-center px-4 py-3 rounded-md
-                   {{ request()->routeIs('dashboard')
-                        ? 'bg-yellow-500 text-black font-semibold'
-                        : 'text-white hover:bg-white hover:text-black transition' }}">
-                    Dashboard
-                </a>
-                <div class="pt-4 text-xs uppercase tracking-wider text-gray-500">
-                    Menu
-                </div>
- <!-- Categories -->
+<!-- Dashboard -->
+<div>
+    <p class="text-xs uppercase text-gray-500 mb-2 px-2">Overview</p>
+
+    <a href="{{ route('dashboard') }}"
+       class="flex items-center px-4 py-3 rounded-md
+       {{ request()->routeIs('dashboard')
+            ? 'bg-yellow-500 text-black font-semibold'
+            : 'text-white hover:bg-gray-800 transition' }}">
+        Dashboard
+    </a>
+</div>
+
+
+<!-- MENU MANAGEMENT -->
+<div>
+    <p class="text-xs uppercase text-gray-500 mb-2 px-2">Menu Management</p>
+
     <a href="{{ route('admin.categories.index') }}"
        class="flex items-center px-4 py-3 rounded-md
-              hover:bg-gray-800 transition">
+       {{ request()->routeIs('admin.categories.*')
+            ? 'bg-yellow-500 text-black font-semibold'
+            : 'hover:bg-gray-800 transition' }}">
         Categories
     </a>
 
-    <!-- Menu Items -->
     <a href="{{ route('admin.menu-items.index') }}"
        class="flex items-center px-4 py-3 rounded-md
-              hover:bg-gray-800 transition">
+       {{ request()->routeIs('admin.menu-items.*')
+            ? 'bg-yellow-500 text-black font-semibold'
+            : 'hover:bg-gray-800 transition' }}">
         Menu Items
     </a>
-      <!-- Offers -->
-<a href="{{ route('admin.offers.index') }}"
-   class="flex items-center px-4 py-3 rounded-md
-          hover:bg-gray-800 transition">
-    Offers
-</a>        
-               
-<!-- Orders -->
-<a href="{{ route('admin.orders.index') }}"
-   class="flex items-center px-4 py-3 rounded-md
-   {{ request()->routeIs('admin.orders.*')
-        ? 'bg-yellow-500 text-black font-semibold'
-        : 'text-white hover:bg-white hover:text-black transition' }}">
-    Orders
-</a>
-<!-- Addon Groups -->
-<a href="{{ route('admin.addon-groups.index') }}"
-   class="flex items-center px-4 py-3 rounded-md
-          {{ request()->routeIs('admin.addon-groups.*')
-            ? 'bg-yellow-500 text-black font-semibold'
-            : 'text-white hover:bg-white hover:text-black transition' }}">
-    Addon Groups
-</a>
 
-<!-- Addons -->
-<a href="{{ route('admin.addons.index') }}"
-   class="flex items-center px-4 py-3 rounded-md
-          {{ request()->routeIs('admin.addons.*')
+    <a href="{{ route('admin.offers.index') }}"
+       class="flex items-center px-4 py-3 rounded-md
+       {{ request()->routeIs('admin.offers.*')
             ? 'bg-yellow-500 text-black font-semibold'
-            : 'text-white hover:bg-white hover:text-black transition' }}">
-    Addons
-</a>
+            : 'hover:bg-gray-800 transition' }}">
+        Offers
+    </a>
+</div>
 
-<!-- Flavors -->
-<a href="{{ route('admin.addon-flavors.index') }}"
-   class="flex items-center px-4 py-3 rounded-md
-          {{ request()->routeIs('admin.addon-flavors.*')
+
+<!-- ORDERS -->
+<div>
+    <p class="text-xs uppercase text-gray-500 mb-2 px-2">Orders</p>
+
+    <a href="{{ route('admin.orders.index') }}"
+       class="flex items-center px-4 py-3 rounded-md
+       {{ request()->routeIs('admin.orders.*')
             ? 'bg-yellow-500 text-black font-semibold'
-            : 'text-white hover:bg-white hover:text-black transition' }}">
-    Flavors
-</a>
+            : 'hover:bg-gray-800 transition' }}">
+        Orders
+    </a>
+</div>
 
-            </nav>
+
+<!-- ADDONS -->
+<div>
+    <p class="text-xs uppercase text-gray-500 mb-2 px-2">Customization</p>
+
+    <a href="{{ route('admin.addon-groups.index') }}"
+       class="flex items-center px-4 py-3 rounded-md
+       {{ request()->routeIs('admin.addon-groups.*')
+            ? 'bg-yellow-500 text-black font-semibold'
+            : 'hover:bg-gray-800 transition' }}">
+        Addon Groups
+    </a>
+
+    <a href="{{ route('admin.addons.index') }}"
+       class="flex items-center px-4 py-3 rounded-md
+       {{ request()->routeIs('admin.addons.*')
+            ? 'bg-yellow-500 text-black font-semibold'
+            : 'hover:bg-gray-800 transition' }}">
+        Addons
+    </a>
+
+    <a href="{{ route('admin.addon-flavors.index') }}"
+       class="flex items-center px-4 py-3 rounded-md
+       {{ request()->routeIs('admin.addon-flavors.*')
+            ? 'bg-yellow-500 text-black font-semibold'
+            : 'hover:bg-gray-800 transition' }}">
+        Flavors
+    </a>
+</div>
+
+</nav>
 
             <!-- Footer -->
             <div class="px-6 py-4 border-t border-gray-800 text-sm text-gray-500">

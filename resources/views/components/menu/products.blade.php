@@ -372,11 +372,6 @@ modal.classList.remove('active');
 
 /* UPDATE PRICE FUNCTION */
 
-function updatePrice(){
-const total = productPrice * quantity;
-priceDisplay.innerText = "$" + total.toFixed(2);
-}
-
 
 /* QUANTITY CONTROLS */
 
@@ -494,13 +489,20 @@ const price = parseFloat(e.target.dataset.price);
 const addonName = e.target.closest('.drink-item')
 .querySelector('.drink-name').innerText;
 
+if(!selectedAddons.some(a => a.name === addonName)){
+
 selectedAddons.push({
 name: addonName,
 price: price
 });
 
 addonTotal += price;
+
 updatePrice();
+
+}
+
+
 
 }
 
@@ -520,13 +522,18 @@ const price = parseFloat(e.target.dataset.price);
 const addonName = e.target.closest('.drink-item')
 .querySelector('.drink-name').innerText;
 
+if(!selectedAddons.some(a => a.name === addonName)){
+
 selectedAddons.push({
 name: addonName,
 price: price
 });
 
 addonTotal += price;
+
 updatePrice();
+
+}
 
 }
 
@@ -536,7 +543,7 @@ updatePrice();
 
 function updatePrice(){
 
-const total = (productPrice * quantity) + addonTotal;
+const total = (productPrice + addonTotal) * quantity;
 
 priceDisplay.innerText = "$" + total.toFixed(2);
 
