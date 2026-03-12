@@ -29,9 +29,14 @@
         <div class="stars">★★★★★</div>
 
         <p>{{ $product->description }}</p>
+        <button class="add-to-cart-btn">+ Add to Cart</button>
+
     </div>
+    
 </div>
+
 @endforeach
+
 
     </div>
 <div class="btn-wrapper">
@@ -512,6 +517,594 @@ display:block;
 
 .section.active + .option-body{
 display:block;
+}
+
+
+/* responsiveness */
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 992px){
+
+.modal-box{
+width:95%;
+padding:20px;
+}
+
+.modal-inner{
+flex-direction:column;
+gap:25px;
+}
+
+/* LEFT OPTIONS */
+.modal-options{
+width:100%;
+margin:0;
+}
+
+/* RIGHT PRODUCT */
+.modal-product{
+width:100%;
+padding:0;
+}
+
+.modal-product-img{
+width:180px;
+}
+
+.modal-product h2{
+font-size:32px;
+}
+
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px){
+
+.modal-box{
+padding:16px;
+border-radius:10px;
+}
+
+/* Product image */
+.modal-product-img{
+width:150px;
+}
+
+/* Product title */
+.modal-product h2{
+font-size:24px;
+line-height:1.2;
+}
+
+/* description */
+.modal-product p{
+font-size:14px;
+}
+
+/* quantity buttons */
+.quantity-wrapper button{
+width:36px;
+height:36px;
+font-size:18px;
+}
+
+/* bucket button */
+.bucket-wrapper{
+flex-direction:column;
+gap:10px;
+}
+
+.bucket-price{
+border-radius:8px;
+width:100%;
+text-align:center;
+}
+
+.add-cart-btn{
+border-radius:8px;
+justify-content:center;
+width:100%;
+}
+
+/* drink item */
+.drink-item{
+flex-direction:column;
+align-items:flex-start;
+gap:6px;
+}
+
+/* addon buttons */
+.drink-btn{
+width:100%;
+text-align:center;
+}
+
+/* dropdown */
+.flavor-dropdown{
+width:100%;
+right:auto;
+left:0;
+}
+
+}
+/* =========================
+TABLET
+========================= */
+@media (max-width: 992px){
+
+.modal-box{
+width:95%;
+padding:20px;
+}
+
+.modal-inner{
+flex-direction:column;
+gap:25px;
+}
+
+/* LEFT PANEL */
+.modal-options{
+width:100%;
+margin:0;
+}
+
+/* RIGHT PANEL */
+.modal-product{
+width:100%;
+padding:0;
+}
+
+.modal-product-img{
+width:180px;
+}
+
+.modal-product h2{
+font-size:32px;
+}
+
+/* fix close button */
+.modal-close{
+top:12px;
+right:12px;
+}
+
+}
+
+/* =========================
+MOBILE
+========================= */
+@media (max-width: 600px){
+
+.modal-box{
+padding:18px;
+max-height:90vh;
+overflow-y:auto;
+}
+
+/* stack layout */
+.modal-inner{
+flex-direction:column;
+}
+
+/* panels */
+.modal-options{
+width:100%;
+margin:0;
+}
+
+.modal-product{
+width:100%;
+padding:0;
+}
+
+/* image */
+.modal-product-img{
+width:150px;
+}
+
+/* title */
+.modal-product h2{
+font-size:24px;
+line-height:1.2;
+}
+
+/* text */
+.modal-product p{
+font-size:14px;
+}
+
+/* quantity */
+.quantity-wrapper button{
+width:36px;
+height:36px;
+font-size:18px;
+}
+
+/* buttons */
+.bucket-wrapper{
+flex-direction:column;
+gap:10px;
+}
+
+.bucket-price{
+width:100%;
+border-radius:8px;
+text-align:center;
+}
+
+.add-cart-btn{
+width:100%;
+border-radius:8px;
+justify-content:center;
+}
+
+/* addon layout */
+.drink-item{
+flex-direction:column;
+align-items:flex-start;
+gap:6px;
+}
+
+.drink-btn{
+width:100%;
+}
+
+/* dropdown fix */
+.flavor-dropdown{
+left:0;
+right:auto;
+width:100%;
+}
+
+/* close button */
+.modal-close{
+top:10px;
+right:10px;
+width:32px;
+height:32px;
+}
+
+}
+/* FIX CLOSE BUTTON POSITION */
+
+
+/* adjust for mobile */
+@media (max-width:600px){
+
+.modal-close{
+top:12px;
+right:12px;
+width:34px;
+height:34px;
+}
+.modal-box{
+padding-top:30px;
+}
+}
+
+/* responsiveness */
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 992px){
+
+.modal-box{
+width:95%;
+padding:20px;
+}
+
+.modal-inner{
+flex-direction:column;
+gap:25px;
+}
+
+/* LEFT OPTIONS */
+.modal-options{
+width:100%;
+margin:0;
+}
+
+/* RIGHT PRODUCT */
+.modal-product{
+width:100%;
+padding:0;
+}
+
+.modal-product-img{
+width:180px;
+}
+
+.modal-product h2{
+font-size:32px;
+}
+
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px){
+
+.modal-box{
+padding:16px;
+border-radius:10px;
+}
+
+/* Product image */
+.modal-product-img{
+width:150px;
+}
+
+/* Product title */
+.modal-product h2{
+font-size:24px;
+line-height:1.2;
+}
+
+/* description */
+.modal-product p{
+font-size:14px;
+}
+
+/* quantity buttons */
+.quantity-wrapper button{
+width:36px;
+height:36px;
+font-size:18px;
+}
+
+/* bucket button */
+.bucket-wrapper{
+flex-direction:column;
+gap:10px;
+}
+
+.bucket-price{
+border-radius:8px;
+width:100%;
+text-align:center;
+}
+
+.add-cart-btn{
+border-radius:8px;
+justify-content:center;
+width:100%;
+}
+
+/* drink item */
+.drink-item{
+flex-direction:column;
+align-items:flex-start;
+gap:6px;
+}
+
+/* addon buttons */
+.drink-btn{
+width:100%;
+text-align:center;
+}
+
+/* dropdown */
+.flavor-dropdown{
+width:100%;
+right:auto;
+left:0;
+}
+
+}
+/* =========================
+TABLET
+========================= */
+@media (max-width: 992px){
+
+.modal-box{
+width:95%;
+padding:20px;
+}
+
+.modal-inner{
+flex-direction:column;
+gap:25px;
+}
+
+/* LEFT PANEL */
+.modal-options{
+width:100%;
+margin:0;
+}
+
+/* RIGHT PANEL */
+.modal-product{
+width:100%;
+padding:0;
+}
+
+.modal-product-img{
+width:180px;
+}
+
+.modal-product h2{
+font-size:32px;
+}
+
+/* fix close button */
+.modal-close{
+top:12px;
+right:12px;
+}
+
+}
+
+/* =========================
+MOBILE
+========================= */
+@media (max-width: 600px){
+
+.modal-box{
+padding:18px;
+max-height:90vh;
+overflow-y:auto;
+}
+
+/* stack layout */
+.modal-inner{
+flex-direction:column;
+}
+
+/* panels */
+.modal-options{
+width:100%;
+margin:0;
+}
+
+.modal-product{
+width:100%;
+padding:0;
+}
+
+/* image */
+.modal-product-img{
+width:150px;
+}
+
+/* title */
+.modal-product h2{
+font-size:24px;
+line-height:1.2;
+}
+
+/* text */
+.modal-product p{
+font-size:14px;
+}
+
+/* quantity */
+.quantity-wrapper button{
+width:36px;
+height:36px;
+font-size:18px;
+}
+
+/* buttons */
+.bucket-wrapper{
+flex-direction:column;
+gap:10px;
+}
+
+.bucket-price{
+width:100%;
+border-radius:8px;
+text-align:center;
+}
+
+.add-cart-btn{
+width:100%;
+border-radius:8px;
+justify-content:center;
+}
+
+/* addon layout */
+.drink-item{
+flex-direction:column;
+align-items:flex-start;
+gap:6px;
+}
+
+.drink-btn{
+width:100%;
+}
+
+/* dropdown fix */
+.flavor-dropdown{
+left:0;
+right:auto;
+width:100%;
+}
+
+/* close button */
+.modal-close{
+top:10px;
+right:10px;
+width:32px;
+height:32px;
+}
+
+}
+/* FIX CLOSE BUTTON POSITION */
+
+
+/* adjust for mobile */
+@media (max-width:600px){
+
+.modal-close{
+top:12px;
+right:12px;
+width:34px;
+height:34px;
+}
+.modal-box{
+padding-top:30px;
+}
+}
+
+
+.product-card{
+position:relative !important;
+padding-bottom:20px;
+}
+.add-to-cart-btn{
+background:#c40000;
+color:#fff;
+border:none;
+padding:10px 20px;
+border-radius:6px;
+font-weight:700;
+cursor:pointer;
+position:absolute;
+right:20px;
+bottom:-20px;
+}
+
+.add-to-cart-btn:hover{
+background: #F6C507;
+}
+
+/* res */
+@media (max-width:992px){
+
+.add-to-cart-btn{
+right:15px;
+bottom:-15px;
+padding:9px 18px;
+font-size:14px;
+}
+
+}
+@media (max-width:600px){
+
+.add-to-cart-btn{
+right:10px;
+bottom:-10px;
+padding:8px 16px;
+font-size:13px;
+}
+
+}
+@media (max-width:768px){
+
+.add-to-cart-btn{
+right:50%;
+transform:translateX(50%);
+bottom:-15px;
+}
+
 }
 </style>
 </section>

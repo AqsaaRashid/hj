@@ -33,6 +33,62 @@
             </main>
         </div>
                         @stack('scripts')
+                        <script>
+
+function loadOrderCount(){
+
+fetch('/admin/order-count')
+.then(res => res.json())
+.then(data => {
+
+let badge = document.getElementById('orderBadge');
+
+if(!badge) return;
+
+if(data.count > 0){
+badge.innerText = data.count;
+badge.classList.remove('hidden');
+}else{
+badge.classList.add('hidden');
+}
+
+});
+
+}
+
+loadOrderCount();
+
+setInterval(loadOrderCount, 10000);
+
+</script>
+
+<script>
+
+function loadContactCount()
+{
+    fetch('/admin/contact-count')
+    .then(res => res.json())
+    .then(data => {
+
+        const badge = document.getElementById('contactBadge');
+
+        if(data.count > 0)
+        {
+            badge.innerText = data.count;
+            badge.classList.remove('hidden');
+        }
+        else
+        {
+            badge.classList.add('hidden');
+        }
+
+    });
+}
+
+setInterval(loadContactCount, 5000);
+loadContactCount();
+
+</script>
 
     </body>
 </html>

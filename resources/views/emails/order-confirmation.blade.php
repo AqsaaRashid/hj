@@ -24,7 +24,7 @@
 <tr>
 <td style="padding:30px;color:#fff;">
     <h2 style="margin:0 0 10px;color:#facc15;">
-        Order Confirmed 
+        Order Confirmed
     </h2>
 
     <p style="color:#ccc;font-size:14px;">
@@ -81,9 +81,24 @@ ${{ number_format($order->total,2) }}
 
 <br>
 
-<p style="color:#aaa;font-size:13px;">
+<p style="color:#aaa;font-size:13px;line-height:1.8;">
+
 Payment Method: {{ strtoupper($order->payment_method) }} <br>
+
+Payment Status:
+@if($order->payment_status == 'paid')
+<span style="background:#22c55e;color:#fff;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:bold;">
+PAID
+</span>
+@else
+<span style="background:#ef4444;color:#fff;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:bold;">
+PENDING
+</span>
+@endif
+
+<br>
 Order Number: {{ $order->order_number }}
+
 </p>
 
 </td>

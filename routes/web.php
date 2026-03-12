@@ -1,5 +1,5 @@
 <?php
-
+use App\Models\Order;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
@@ -15,7 +15,36 @@ use App\Http\Controllers\Admin\AddonFlavorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\StripeWebhookController;
+use App\Http\Controllers\ContactController;
+// contactus
 
+Route::post('/contact-submit',[ContactController::class,'store'])->name('contact.store');
+
+Route::get('/admin/contacts',[ContactController::class,'index'])->name('contacts.index');
+
+Route::get('/admin/contacts', [ContactController::class, 'index'])
+    ->name('admin.contacts.index');
+Route::delete('/admin/contacts/{id}', [ContactController::class, 'destroy'])
+    ->name('admin.contacts.destroy');
+    Route::get('/admin/contacts/{id}',[ContactController::class,'show'])
+    ->name('admin.contacts.show');
+
+Route::post('/admin/contacts/{id}/reply',
+    [ContactController::class,'reply'])
+    ->name('admin.contacts.reply');
+
+
+    // contact
+    Route::get('/admin/contact-count', function () {
+
+    $count = \App\Models\Contact::where('is_seen', false)->count();
+
+    return response()->json([
+        'count' => $count
+    ]);
+
+});
+    // sample
 Route::get('/', function () {
     return view('index');
 });
@@ -38,7 +67,15 @@ Route::get('faqs', function () {
 
 
 // routes
+Route::get('/admin/order-count', function () {
 
+    $count = Order::where('is_seen', false)->count();
+
+    return response()->json([
+        'count' => $count
+    ]);
+
+});
 // payment
 // STRIPE PAYMENT
 Route::post('/place-order', [CheckoutController::class, 'placeOrder'])
@@ -47,13 +84,15 @@ Route::post('/place-order', [CheckoutController::class, 'placeOrder'])
 Route::post('/stripe/checkout', [StripeController::class, 'checkout'])
     ->name('stripe.checkout');
 
-Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
 
 Route::get('/payment-success', [StripeController::class, 'success'])
     ->name('payment.success');
 
 Route::get('/payment-cancel', [StripeController::class, 'cancel'])
     ->name('payment.cancel');
+
+    Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook'])
+    ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
 
 // cart
 

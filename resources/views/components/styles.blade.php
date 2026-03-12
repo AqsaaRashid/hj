@@ -211,7 +211,7 @@ body{
 }
 
 .hero-content h1 span{
-    color:#f7b500;
+    color: #f7b500;
 }
 
 .hero-list{
@@ -1172,7 +1172,7 @@ body{
   text-decoration:none;
   font-weight:600;
   transition:0.3s ease;
-  margin-top:-30px;
+  margin-top:-10px;
 }
 
 .explore-btn:hover{
@@ -1564,7 +1564,7 @@ font-size:20px !important;
 /* cards row */
 .t-cards{
   position:absolute;
-  top:120px;                 /* cards sit inside orange block area */
+  top:120px;
   left:50%;
   transform:translateX(-50%);
   width:100%;
@@ -1573,6 +1573,8 @@ font-size:20px !important;
   justify-content:space-between;
   gap:10px;
   z-index:2;
+  flex-wrap:wrap;
+  overflow: hidden !important;
 }
 
 .t-card{
@@ -1757,7 +1759,15 @@ font-size:20px !important;
     margin:-120px auto 0;
   }
 }
+.t-cards{
+  overflow:hidden;
+}
 
+.t-track{
+  display:flex;
+  gap:10px;
+  transition:transform 0.4s ease;
+}
 /* moments */
 
 .featured{

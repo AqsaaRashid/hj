@@ -9,27 +9,31 @@ use Carbon\Carbon;
 
 class OrderController extends Controller
 {
-    public function index(Request $request)
-    {
-        $query = Order::query()->latest();
+   public function index(Request $request)
+{
+    $query = Order::query()->latest();
 
-        if ($request->status) {
-            $query->where('order_status', $request->status);
-        }
-
-        if ($request->payment) {
-            $query->where('payment_status', $request->payment);
-        }
-
-        if ($request->method) {
-            $query->where('payment_method', $request->method);
-        }
-
-        $orders = $query->paginate(15);
-
-        return view('admin.orders.index', compact('orders'));
+    if ($request->status) {
+        $query->where('order_status', $request->status);
     }
 
+    if ($request->payment) {
+        $query->where('payment_status', $request->payment);
+    }
+
+    if ($request->method) {
+        $query->where('payment_method', $request->method);
+    }
+
+    $orders = $query->paginate(15);
+
+    // Mark all unseen orders as seen when admin opens Orders page
+    Order::where('is_seen', false)->update([
+        'is_seen' => true
+    ]);
+
+    return view('admin.orders.index', compact('orders'));
+}
 
     public function trash()
     {

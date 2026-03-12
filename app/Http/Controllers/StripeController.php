@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
 use App\Models\Order;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderConfirmationMail;
 
 class StripeController extends Controller
 {
@@ -102,23 +104,26 @@ public function success(Request $request)
         return redirect()->route('home')->with('error','Payment session not found.');
     }
 
-    // Get Stripe session
     $session = \Stripe\Checkout\Session::retrieve($sessionId);
 
-    // Find order using saved stripe_session_id
     $order = Order::where('stripe_session_id', $sessionId)->first();
 
     if ($order && $session->payment_status === 'paid') {
 
         $order->payment_status = 'paid';
         $order->order_status = 'approved';
-
         $order->save();
+
+        // Send confirmation email
+        Mail::to($order->customer_email)
+            ->send(new OrderConfirmationMail($order));
 
         session()->forget(['cart','promo','customer']);
     }
 
-return redirect('/payment-success')->with('success','Payment successful!');}
+    return redirect('/payment-success')->with('success','Payment successful!');
+}
+
 public function cancel()
 {
     return view('payment-cancel');

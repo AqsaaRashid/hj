@@ -68,13 +68,20 @@
 <div>
     <p class="text-xs uppercase text-gray-500 mb-2 px-2">Orders</p>
 
-    <a href="{{ route('admin.orders.index') }}"
-       class="flex items-center px-4 py-3 rounded-md
-       {{ request()->routeIs('admin.orders.*')
-            ? 'bg-yellow-500 text-black font-semibold'
-            : 'hover:bg-gray-800 transition' }}">
-        Orders
-    </a>
+   <a href="{{ route('admin.orders.index') }}"
+class="flex items-center justify-between px-4 py-3 rounded-md
+{{ request()->routeIs('admin.orders.*')
+? 'bg-yellow-500 text-black font-semibold'
+: 'hover:bg-gray-800 transition' }}">
+
+<span>Orders</span>
+
+<span id="orderBadge"
+class="bg-red-500 text-white text-xs px-2 py-1 rounded-full hidden">
+0
+</span>
+
+</a>
 </div>
 
 
@@ -106,7 +113,20 @@
         Flavors
     </a>
 </div>
+<a href="{{ route('admin.contacts.index') }}"
+class="flex items-center justify-between px-4 py-3 rounded-md
+{{ request()->routeIs('admin.contacts.*')
+? 'bg-yellow-500 text-black font-semibold'
+: 'hover:bg-gray-800 transition' }}">
 
+<span>Contact Messages</span>
+
+<span id="contactBadge"
+class="bg-red-500 text-white text-xs px-2 py-1 rounded-full hidden">
+0
+</span>
+
+</a>
 </nav>
 
             <!-- Footer -->
