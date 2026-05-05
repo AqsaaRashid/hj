@@ -1101,6 +1101,7 @@ body{
   align-items:center;
   transition:0.3s ease;
   cursor:pointer;
+  margin-top:30px;
 }
 
 .product-img{

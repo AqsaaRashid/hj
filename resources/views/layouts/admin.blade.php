@@ -127,6 +127,27 @@ class="bg-red-500 text-white text-xs px-2 py-1 rounded-full hidden">
 </span>
 
 </a>
+<!-- chat -->
+ <a href="{{ route('admin.chat.index') }}"
+class="flex items-center px-4 py-3 rounded-md
+{{ request()->routeIs('admin.chat.*')
+? 'bg-yellow-500 text-black font-semibold'
+: 'hover:bg-gray-800 transition' }}">
+
+Chat Requests
+
+</a>
+
+<!-- new chat -->
+  <a href="{{ route('admin.chats.messages') }}"
+class="flex items-center px-4 py-3 rounded-md
+{{ request()->routeIs('admin.chats.*')
+? 'bg-yellow-500 text-black font-semibold'
+: 'hover:bg-gray-800 transition' }}">
+
+Chatbot Messages
+
+</a>
 </nav>
 
             <!-- Footer -->

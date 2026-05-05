@@ -11,13 +11,31 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\AddonGroupController;
 use App\Http\Controllers\Admin\AddonController;
 use App\Http\Controllers\Admin\AddonFlavorController;
-
 use App\Http\Controllers\DashboardController;
+
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\StripeWebhookController;
 use App\Http\Controllers\ContactController;
-// contactus
+use App\Http\Controllers\Admin\ChatMessageController;
 
+// new
+Route::prefix('admin')->group(function(){
+
+Route::get('/chat-messages',[ChatMessageController::class,'index'])->name('admin.chats.messages');
+
+Route::post('/chat-reply/{id}',[ChatMessageController::class,'reply'])->name('admin.chats.reply');
+
+});
+// contactus
+Route::post('/chat-request',[ChatController::class,'store'])->name('chat.request');
+Route::get('/admin/chat-requests',[ChatController::class,'index']);
+Route::get('/admin/chat-requests', [ChatController::class, 'index'])->name('admin.chat.index');
+Route::post('/admin/chat-notify',[ChatController::class,'notify'])
+->name('admin.chat.notify');
+Route::post('/chatbot', [ChatController::class,'chatbot'])->name('chatbot');
+Route::get('/chat-reply/{id}',[ChatController::class,'checkReply']);
+// 
 Route::post('/contact-submit',[ContactController::class,'store'])->name('contact.store');
 
 Route::get('/admin/contacts',[ContactController::class,'index'])->name('contacts.index');

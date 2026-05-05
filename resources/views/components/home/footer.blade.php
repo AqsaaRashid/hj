@@ -24,6 +24,10 @@
   border-radius:10px;
   overflow:hidden;
   font-family:'Poppins', sans-serif;
+  height:460px;     
+
+  display:flex;
+  flex-direction:column;
 }
 
 /* HEADER */
@@ -72,6 +76,8 @@
   padding-top:20px;
   padding-right:50px;
   margin-bottom:-37px;
+    overflow-y:auto;       /* enables scroll */
+  flex:1;  
 
 }
 
@@ -219,6 +225,55 @@
   bottom: 20px;
   right: 20px;
 }
+
+
+.chat-conversation{
+  flex:1;
+  width:100%;
+  overflow-y:auto;
+  padding:15px;
+  margin-bottom:10px;
+}
+.chat-input-bar{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 15px;
+  border-top:1px solid #eee;
+  background:#fff;
+  position:sticky !important;
+
+}
+
+.chat-input-bar input{
+  flex:1;
+  padding:12px 14px;
+  border-radius:25px;
+  border:1px solid #ccc;
+  outline:none;
+  font-size:14px;
+}
+
+.attach-btn{
+  border:none;
+  background:#f3f3f3;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+
+.attach-btn i{
+  font-size:18px;
+  color:#555;
+}
+
+
+
+
   </style>
 <section class="contact-section">
 
@@ -317,8 +372,7 @@
     </div>
 
     <!-- BODY -->
-    <div class="chat-popup-body">
-
+<div class="chat-popup-body" id="chatOptionsScreen">
       <!-- MESSAGE WITH SMALL LOGO -->
       <div class="chat-message-wrapper">
         <img src="{{ asset('images/logoo.png') }}" class="small-logo">
@@ -330,15 +384,15 @@
       <!-- OPTIONS BOX -->
       <div class="chat-options-box">
 
-        <div class="chat-option">
-          <i class="bi bi-chat"></i>
-          Chat via SMS/Email
-        </div>
+       <div class="chat-option" id="openSmsForm">
+  <i class="bi bi-chat"></i>
+  Chat via SMS/Email
+</div>
 
-        <div class="chat-option">
-          <i class="bi bi-chat-dots"></i>
-          Chat via Live Chat
-        </div>
+       <div class="chat-option" id="openLiveChat">
+  <i class="bi bi-chat-dots"></i>
+  Chat via Live Chat
+</div>
 
       </div>
 
@@ -350,6 +404,91 @@
 
     </div>
 
+    <!-- SMS / EMAIL FORM SCREEN -->
+<div class="chat-popup-body" id="smsFormScreen" style="display:none;">
+
+  <button id="backToOptions" style="border:none;background:none;color:#BB0000;font-weight:600;margin-left:10px;margin-bottom:15px;cursor:pointer;">
+    ← Back
+  </button>
+
+  <div class="chat-message-wrapper">
+    <img src="{{ asset('images/logoo.png') }}" class="small-logo">
+    <div class="chat-message">
+      Enter your question below and a representative will get right back to you.
+    </div>
+  </div>
+   <form id="smsChatForm" method="POST" action="{{ route('chat.request') }}">
+@csrf
+  <div class="chat-options-box">
+
+<input type="email"
+name="email"
+placeholder="Email"
+style="width:100%;padding:10px;border-radius:6px;border:1px solid #ddd;margin-bottom:12px;">
+    <input type="text" name="phone"placeholder="Phone" style="width:100%;padding:10px;border-radius:6px;border:1px solid #ddd;margin-bottom:12px;">
+
+    <p style="font-size:12px;color:#666;">
+      By submitting you agree to receive SMS or e-mails for the provided channel. Rates may be applied.
+    </p>
+
+    <button type="submit"
+style="width:100%;background:#BB0000;color:#fff;border:none;padding:12px;border-radius:6px;margin-top:10px;">
+Send →
+</button>
+
+  </div>
+  </form>
+
+  <div class="chat-powered">
+    Powered by
+    <img src="{{ asset('images/powered.png') }}" class="powered-img">
+  </div>
+
+
+</div>
+
+<!-- new -->
+<!-- LIVE CHAT SCREEN (UI ONLY) -->
+<!-- LIVE CHAT SCREEN -->
+<div class="chat-popup-body" id="liveChatScreen" style="display:none;flex-direction:column;">
+
+<button id="backFromLiveChat"
+style="border:none;background:none;color:#BB0000;font-weight:600;margin-left:10px;margin-bottom:15px;cursor:pointer;">
+← Back
+</button>
+
+<div class="chat-message-wrapper">
+<img src="{{ asset('images/logoo.png') }}" class="small-logo">
+<div class="chat-message">
+Start a conversation with our team.
+</div>
+</div>
+
+<!-- CHAT AREA -->
+<div id="chatArea" class="chat-conversation"></div>
+
+<!-- MESSAGE INPUT -->
+<div class="chat-input-bar">
+
+<button class="attach-btn">
+</button>
+
+<input id="liveChatInput"
+type="text"
+placeholder="Type your message...">
+
+<button id="sendLiveMessage" class="send-btn">
+<i class="bi bi-send-fill"></i>
+</button>
+
+</div>
+
+<div class="chat-powered">
+Powered by
+<img src="{{ asset('images/powered.png') }}" class="powered-img">
+</div>
+
+</div>
   </div>
 
 </div>
@@ -381,4 +520,219 @@ window.addEventListener("click", function(e){
     popup.style.display = "none";
   }
 });
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const smsBtn = document.getElementById("openSmsForm");
+const optionsScreen = document.getElementById("chatOptionsScreen");
+const smsScreen = document.getElementById("smsFormScreen");
+const backBtn = document.getElementById("backToOptions");
+
+if(smsBtn){
+  smsBtn.addEventListener("click", function(){
+    optionsScreen.style.display = "none";
+    smsScreen.style.display = "block";
+  });
+}
+
+if(backBtn){
+  backBtn.addEventListener("click", function(){
+    smsScreen.style.display = "none";
+    optionsScreen.style.display = "block";
+  });
+}
+
+
+const liveBtn = document.getElementById("openLiveChat");
+const liveScreen = document.getElementById("liveChatScreen");
+const backLive = document.getElementById("backFromLiveChat");
+
+if(liveBtn){
+  liveBtn.addEventListener("click", function(){
+    optionsScreen.style.display = "none";
+    liveScreen.style.display = "block";
+  });
+}
+
+if(backLive){
+  backLive.addEventListener("click", function(){
+    liveScreen.style.display = "none";
+    optionsScreen.style.display = "block";
+  });
+}
+const startLiveChat = document.getElementById("startLiveChat");
+
+if(startLiveChat){
+  startLiveChat.addEventListener("click", function(){
+    if(typeof Tawk_API !== "undefined"){
+      Tawk_API.toggle();
+    }
+  });
+}
+
+// new
+const sendBtn = document.getElementById("sendLiveMessage");
+const chatInput = document.getElementById("liveChatInput");
+const chatArea = document.getElementById("chatArea");
+
+if(sendBtn){
+
+sendBtn.addEventListener("click", function(){
+
+const message = chatInput.value.trim();
+
+if(message === "") return;
+
+
+/* USER MESSAGE */
+
+const msg = document.createElement("div");
+
+msg.style.background = "#BB0000";
+msg.style.color = "#fff";
+msg.style.padding = "10px 14px";
+msg.style.borderRadius = "10px";
+msg.style.marginBottom = "10px";
+msg.style.maxWidth = "70%";
+msg.style.marginLeft = "auto";
+
+msg.innerText = message;
+
+chatArea.appendChild(msg);
+
+chatInput.value = "";
+
+
+/* SEND MESSAGE TO LARAVEL */
+
+fetch("{{ route('chatbot') }}",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json",
+"X-CSRF-TOKEN":"{{ csrf_token() }}"
+},
+
+body:JSON.stringify({
+message:message
+})
+
+})
+.then(res=>res.json())
+.then(data=>{
+
+/* BOT MESSAGE */
+
+const bot = document.createElement("div");
+
+bot.style.background="#F8DFDD";
+bot.style.padding="10px 14px";
+bot.style.borderRadius="10px";
+bot.style.marginBottom="10px";
+bot.style.maxWidth="70%";
+
+bot.innerText = data.reply;
+
+chatArea.appendChild(bot);
+
+chatArea.scrollTop = chatArea.scrollHeight;
+
+
+/* START CHECKING ADMIN REPLY */
+
+if(data.chat_id){
+    checkReply(data.chat_id);
+}
+
+});
+
+});
+
+}
+
+
+/* ENTER KEY SUPPORT */
+
+chatInput.addEventListener("keypress", function(e){
+
+if(e.key === "Enter"){
+sendBtn.click();
+}
+
+});
+function checkReply(chatId){
+
+let interval = setInterval(function(){
+
+fetch("/chat-reply/"+chatId)
+
+.then(res=>res.json())
+
+.then(data=>{
+
+if(data.reply){
+
+const bot = document.createElement("div");
+
+bot.style.background="#F8DFDD";
+bot.style.padding="10px 14px";
+bot.style.borderRadius="10px";
+bot.style.marginBottom="10px";
+bot.style.maxWidth="70%";
+
+bot.innerText = data.reply;
+
+chatArea.appendChild(bot);
+
+chatArea.scrollTop = chatArea.scrollHeight;
+
+/* STOP CHECKING AFTER REPLY */
+
+clearInterval(interval);
+
+}
+
+});
+
+},5000);
+
+}
+});
+document.getElementById("smsChatForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+let formData = new FormData(this);
+
+fetch("{{ route('chat.request') }}",{
+method:"POST",
+body:formData,
+headers:{
+'X-CSRF-TOKEN': '{{ csrf_token() }}'
+}
+})
+.then(res=>res.json())
+.then(data=>{
+
+alert("Request submitted!");
+
+document.getElementById("smsChatForm").reset();
+
+});
+
+});
+
+</script>
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),
+s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/YOUR-ID/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
 </script>
